@@ -1,7 +1,7 @@
 *Files to look at*:
 
-* [Form1.cs](./CS/CustomItemSample/Form1.cs) (VB: [Form1.vb](./VB/CustomItemSample/Form1.vb))
-* [Modules](./CS/CustomItemSample/CustomItems/) (VB: [Modules](./VB/CustomItemSample/CustomItems/))
+* [Form1.cs](./CS/CustomItemsSample/Form1.cs) (VB: [Form1.vb](./VB/CustomItemsSample/Form1.vb))
+* [Modules](./CS/CustomItemsSample/CustomItems/) (VB: [Modules](./VB/CustomItemsSample/CustomItems/))
 
 # WinForms Dashboard - Custom Items
 
