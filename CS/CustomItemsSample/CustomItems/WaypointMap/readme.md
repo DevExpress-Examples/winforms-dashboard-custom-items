@@ -1,3 +1,5 @@
+# Custom WayPoint Map Item
+
 A custom WaypointMap item supports the following capabilities:
 
 * [Export](http://docs.devexpress.devx/Dashboard/15187/winforms-dashboard/winforms-designer/create-dashboards-in-the-winforms-designer/printing-and-exporting?v=21.1&p=netframework)
@@ -26,7 +28,7 @@ The `SetSelection()` method applies the element selection according to the maste
 
     Contains the `Attach()` and `Detach()` methods that create custom item bars in the Ribbon, attach the DashboardDesigner to the module and subscribe and unsubscribe the [DashboardDesigner.CustomDashboardItemControlCreating](xref:DevExpress.DashboardWin.DashboardDesigner.CustomDashboardItemControlCreating) event used to visualize the custom item in a dashboard.
 
-## How to Integrate WaypointMap Module 
+## Integrate the WaypointMap Module 
 
 * Add the `WaypointMap` module to your solution.
 * Add a reference to this project to References in your project with a dashboard control.
