@@ -80,7 +80,7 @@ public Form1() {
 **VB code**: 
 ```vb
 Public Sub New()
-		InitializeComponent()
-		WaypointMapItemModuleItemModule.AttachDesigner(dashboardDesigner1)
+	InitializeComponent()
+	WaypointMapItemModuleItemModule.AttachDesigner(dashboardDesigner1)
 End Sub
 ```
