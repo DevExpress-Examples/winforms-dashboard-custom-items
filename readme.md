@@ -9,13 +9,13 @@ The following example shows how you can implement a custom dashboard item in a W
 
 This repository contains the following custom dashboard items that allow you to add the additional functionality to the WinForms Dashboard:
 
-* [Sankey diagram](./CS/CustomItemSample/CustomItems/SankeyChart/readme.md)
+* [Sankey diagram](./CS/CustomItemsSample/CustomItems/SankeyChart/readme.md)
 
     A Sankey diagram visualizes data as weighted flows or relationships between nodes. 
-* [Sunburst](./CS/CustomItemSample/CustomItems/SunburstChart/readme.md)
+* [Sunburst](./CS/CustomItemsSample/CustomItems/SunburstChart/readme.md)
 
     A Sunburst combines a TreeMap and a Pie chart to visualize hierarchical data in a circular layout. 
-* [Waypoint map](./CS/CustomItemSample/CustomItems/WaypointMap/readme.md) 
+* [Waypoint map](./CS/CustomItemsSample/CustomItems/WaypointMap/readme.md) 
 
     A Waypoint map visualized data as linked points.
 
