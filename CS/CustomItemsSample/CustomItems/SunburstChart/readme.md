@@ -76,7 +76,7 @@ public Form1() {
 **VB code**: 
 ```vb
 Public Sub New()
-		InitializeComponent()
-		SunburstItemModule.AttachDesigner(dashboardDesigner1)
+	InitializeComponent()
+	SunburstItemModule.AttachDesigner(dashboardDesigner1)
 End Sub
 ```
