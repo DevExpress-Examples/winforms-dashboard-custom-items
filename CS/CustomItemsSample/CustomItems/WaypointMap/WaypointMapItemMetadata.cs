@@ -5,7 +5,7 @@ namespace CustomItemsSample {
     [
     DisplayName("Waypoint Map"),
     CustomItemDescription("Waypoint Map Description"),
-    CustomItemImage("DashboardMainDemo.Images.WaypointCustomItem.svg")
+    CustomItemImage("CustomItemsSample.Images.WaypointCustomItem.svg")
     ]
     public class WaypointMapItemMetadata : CustomItemMetadata {
         [

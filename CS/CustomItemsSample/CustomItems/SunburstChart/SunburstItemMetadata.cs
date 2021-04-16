@@ -5,7 +5,7 @@ namespace CustomItemsSample {
     [
     DisplayName("Sunburst"),
     CustomItemDescription("Sunburst description"),
-    CustomItemImage("DashboardMainDemo.Images.SunburstCustomItem.svg")
+    CustomItemImage("CustomItemsSample.Images.SunburstCustomItem.svg")
     ]
     public class SunburstItemMetadata : CustomItemMetadata {
         readonly DimensionCollection arguments = new DimensionCollection();

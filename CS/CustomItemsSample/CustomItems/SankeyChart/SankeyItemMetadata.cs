@@ -5,7 +5,7 @@ namespace CustomItemsSample {
     [
     DisplayName("Sankey"),
     CustomItemDescription("Sankey description"),
-    CustomItemImage("DashboardMainDemo.Images.SankeyCustomItem.svg")
+    CustomItemImage("CustomItemsSample.Images.SankeyCustomItem.svg")
     ]
     public class SankeyItemMetadata : CustomItemMetadata {
         [

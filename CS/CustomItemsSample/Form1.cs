@@ -14,7 +14,8 @@ namespace CustomItemsSample {
             SunburstItemModule.AttachDesigner(dashboardDesigner1);
             SankeyItemModule.AttachDesigner(dashboardDesigner1);
             WaypointMapItemModule.AttachDesigner(dashboardDesigner1);
-
+            dashboardDesigner1.CreateRibbon();
+            dashboardDesigner1.CreateCustomItemsBars();
             dashboardDesigner1.LoadDashboard(@"..\..\CustomItems.xml");
         }
 
