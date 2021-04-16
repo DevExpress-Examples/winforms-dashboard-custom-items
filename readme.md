@@ -17,5 +17,5 @@ This repository contains the following custom dashboard items that allow you to 
     A Sunburst combines a TreeMap and a Pie chart to visualize hierarchical data in a circular layout. 
 * [Waypoint map](./CS/CustomItemsSample/CustomItems/WaypointMap/readme.md) 
 
-    A Waypoint map visualized data as linked points.
+    A Waypoint map visualized data as linked points. 
 
