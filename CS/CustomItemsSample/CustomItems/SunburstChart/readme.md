@@ -16,7 +16,7 @@ The SunburstChart module consists of the following classes:
 * [SunburstItemControlProvider](SunburstItemControlProvider.cs)
 
    Configures a custom control that displays the Sunburst custom item. The [CustomControlProviderBase.UpdateControl(CustomItemData)](http://docs.devexpress.devx/Dashboard/DevExpress.DashboardWin.CustomControlProviderBase.UpdateControl(DevExpress.DashboardCommon.CustomItemData)?v=21.1&p=netframework) method is called each time when custom item's data or settings change. The method supplies calculated data for a custom item based on measures and dimensions that are specified in `SunburstItemMetadata`. The [GetPrintableControl](http://docs.devexpress.devx/Dashboard/DevExpress.DashboardWin.CustomControlProviderBase.GetPrintableControl(DevExpress.DashboardCommon.CustomItemData-DevExpress.DashboardCommon.CustomItemExportInfo)?v=21.1&p=netframework) method exports the custom item. 
-The `SetSelection()` method applies the element selection according to the master filter state. The SelectedItemsChanged() method processes the element selection to apply the master filter to the dashboard.
+The `SetSelection()` method applies the element selection according to the master filter state. The [SelectionChanged](http://docs.devexpress.devx/WindowsForms/DevExpress.XtraMap.MapControl.SelectionChanged?p=netframework) method processes the element selection to apply the master filter to the dashboard when [Multiple Master Filter](http://docs.devexpress.devx/Dashboard/15702/winforms-dashboard/winforms-designer/create-dashboards-in-the-winforms-designer/interactivity/master-filtering?v=21.1) mode is enabled. In Single Filter Mode, the `MouseClick` event is used instead.
 
 
 * [SunburstItemExtensionModule](SunburstItemExtensionModule.cs)
