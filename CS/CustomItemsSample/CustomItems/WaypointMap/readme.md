@@ -2,7 +2,7 @@
 
 ![WayPointMap](../../../../images/WayPointMap.png)
 
-A custom WaypointMap item supports the following capabilities:
+A custom WaypointMap item supports the following functionality:
 
 * [Export](http://docs.devexpress.devx/Dashboard/15187/winforms-dashboard/winforms-designer/create-dashboards-in-the-winforms-designer/printing-and-exporting?v=21.1&p=netframework)
 * [Master-Filtering](http://docs.devexpress.devx/Dashboard/15702/winforms-dashboard/winforms-designer/create-dashboards-in-the-winforms-designer/interactivity/master-filtering?v=21.1)
