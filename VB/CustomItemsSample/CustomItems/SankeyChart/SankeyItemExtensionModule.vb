@@ -32,11 +32,13 @@ Namespace CustomItemsSample
 				AddHandler dashboardControl.CustomDashboardItemControlCreating, AddressOf OnCustomDashboardItemControlCreating
 			End If
 		End Sub
-		Private Sub OnCustomDashboardItemControlCreating(ByVal sender As Object, ByVal e As CustomDashboardItemControlCreatingEventArgs)
-			Dim dashboardControl As IDashboardControl = CType(sender, IDashboardControl)
-			If e.MetadataType Is GetType(SankeyItemMetadata) Then
-				e.CustomControlProvider = New SankeyItemControlProvider(TryCast(dashboardControl.Dashboard.Items(e.DashboardItemName), CustomDashboardItem(Of SankeyItemMetadata)))
-			End If
-		End Sub
-	End Class
+        Private Sub OnCustomDashboardItemControlCreating(ByVal sender As Object,
+            ByVal e As CustomDashboardItemControlCreatingEventArgs)
+            Dim dashboardControl As IDashboardControl = CType(sender, IDashboardControl)
+            If e.MetadataType Is GetType(SankeyItemMetadata) Then
+                e.CustomControlProvider = New SankeyItemControlProvider(
+                TryCast(dashboardControl.Dashboard.Items(e.DashboardItemName), CustomDashboardItem(Of SankeyItemMetadata)))
+            End If
+        End Sub
+    End Class
 End Namespace
