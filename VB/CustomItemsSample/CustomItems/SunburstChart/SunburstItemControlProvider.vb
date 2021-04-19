@@ -1,5 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.Collections.Generic
 Imports System.Drawing
 Imports System.Linq
@@ -16,6 +15,7 @@ Imports DevExpress.XtraTreeMap
 Namespace CustomItemsSample
 	Public Class SunburstItemControlProvider
 		Inherits CustomControlProviderBase
+
 		Private skipSelectionEvent As Boolean = False
 		Private sunburst As SunburstControl
 		Private dataAdapter As SunburstFlatDataAdapter
@@ -57,7 +57,7 @@ Namespace CustomItemsSample
 			skipSelectionEvent = True
 			Dim selectedRows As IList(Of DashboardFlatDataSourceRow) = selection.AsDashboardFlatDataSourceRows(flatData)
 			sunburst.SelectedItems.Clear()
-			selectedRows.ForEach(Function(r) sunburst.SelectedItems.Add(r))
+			selectedRows.ForEach(Sub(r) sunburst.SelectedItems.Add(r))
 			skipSelectionEvent = False
 		End Sub
 		Public Overrides Function GetPrintableControl(ByVal customItemData As CustomItemData, ByVal exportInfo As CustomItemExportInfo) As XRControl
@@ -66,7 +66,11 @@ Namespace CustomItemsSample
 			Return container
 		End Function
 		Private Sub ClearDataBindings()
+'INSTANT VB WARNING: An assignment within expression was extracted from the following statement:
+'ORIGINAL LINE: dataAdapter.DataSource = dataAdapter.ValueDataMember = dataAdapter.LabelDataMember = null;
 			dataAdapter.LabelDataMember = Nothing
+'INSTANT VB WARNING: An assignment within expression was extracted from the following statement:
+'ORIGINAL LINE: dataAdapter.DataSource = dataAdapter.ValueDataMember = dataAdapter.LabelDataMember
 			dataAdapter.ValueDataMember = dataAdapter.LabelDataMember
 			dataAdapter.DataSource = dataAdapter.ValueDataMember
 			dataAdapter.GroupDataMembers.Clear()
@@ -84,8 +88,8 @@ Namespace CustomItemsSample
 		Private Sub SetDataBindings(ByVal flatDataSource As DashboardFlatDataSource)
 			dataAdapter.ValueDataMember = dashboardItem.Metadata.Value.UniqueId
 			dataAdapter.LabelDataMember = dashboardItem.Metadata.Arguments.Last().UniqueId
-            dataAdapter.GroupDataMembers.AddRange(dashboardItem.Metadata.Arguments.Where(Function(d) Not d.Equals(dashboardItem.Metadata.Arguments.Last())).Select(Function(d) d.UniqueId).ToList())
-            Try
+			dataAdapter.GroupDataMembers.AddRange(dashboardItem.Metadata.Arguments.Where(Function(d) d <> dashboardItem.Metadata.Arguments.Last()).Select(Function(d) d.UniqueId).ToList())
+			Try
 				dataAdapter.DataSource = flatDataSource
 			Catch
 				dataAdapter.DataSource = Nothing
@@ -113,7 +117,7 @@ Namespace CustomItemsSample
 		Private Sub Sunburst_MouseClick(ByVal sender As Object, ByVal e As MouseEventArgs)
 			If Interactivity.MasterFilterMode = DashboardItemMasterFilterMode.Single Then
 				Dim hi As SunburstHitInfo = sunburst.CalcHitInfo(e.Location)
-				If hi.InSunburstItem AndAlso (Not hi.SunburstItem.IsGroup) Then
+				If hi.InSunburstItem AndAlso Not hi.SunburstItem.IsGroup Then
 					If Interactivity.CanSetMasterFilter Then
 						Interactivity.SetMasterFilter(TryCast(hi.SunburstItem.Tag, DashboardFlatDataSourceRow))
 					End If
@@ -138,36 +142,37 @@ Namespace CustomItemsSample
 			End If
 		End Sub
 	End Class
-    Friend Class SunburstItemColorizer
-        Implements ISunburstColorizer
-        Public Event ColorizerChanged As ColorizerChangedEventHandler
-        Private Event ISunburstColorizer_ColorizerChanged As ColorizerChangedEventHandler Implements ISunburstColorizer.ColorizerChanged
-        Private defaultColor As Color = Color.Gray
-        Private ReadOnly flatData As DashboardFlatDataSource
-        Private maxcoloringIndex As Integer
-        Public Sub New(ByVal flatData As DashboardFlatDataSource, ByVal maxcoloringIndex As Integer)
-            Me.flatData = flatData
-            Me.maxcoloringIndex = maxcoloringIndex
-        End Sub
-        Public Function GetItemColor(ByVal item As ISunburstItem, ByVal group As SunburstItemGroupInfo) As Color Implements ISunburstColorizer.GetItemColor
-            If group.GroupLevel < maxcoloringIndex Then
-                Dim alpha As Integer = CType(255 * (group.MaxGroupLevel - group.GroupLevel + 1) / (group.MaxGroupLevel + 1), Integer)
-                Return Color.FromArgb(alpha, defaultColor)
-            End If
-            If TypeOf item.Tag Is DashboardFlatDataSourceRow Then
-                Dim row As DashboardFlatDataSourceRow = TryCast(item.Tag, DashboardFlatDataSourceRow)
-                Dim colorData As Object = flatData.GetValue(flatData.GetColoringColumn().Name, row)
-                If colorData IsNot Nothing Then
-                    Return Color.FromArgb(CInt(Fix(colorData)))
-                End If
-            End If
-            If TypeOf item.Tag Is List(Of Object) Then
-                Dim colors As IEnumerable(Of Integer) = (TryCast(item.Tag, List(Of Object))).OfType(Of DashboardFlatDataSourceRow)().Select(Function(row) flatData.GetValue(flatData.GetColoringColumn().Name, row)).OfType(Of Integer)().Distinct()
-                If colors.Count() = 1 Then
-                    Return Color.FromArgb(colors.First())
-                End If
-            End If
-            Return defaultColor
-        End Function
-    End Class
+	Friend Class SunburstItemColorizer
+		Implements ISunburstColorizer
+
+		Public Event ColorizerChanged As ColorizerChangedEventHandler
+		Private defaultColor As Color = Color.Gray
+		Private ReadOnly flatData As DashboardFlatDataSource
+		Private maxcoloringIndex As Integer
+		Public Sub New(ByVal flatData As DashboardFlatDataSource, ByVal maxcoloringIndex As Integer)
+			Me.flatData = flatData
+			Me.maxcoloringIndex = maxcoloringIndex
+		End Sub
+		Public Function GetItemColor(ByVal item As ISunburstItem, ByVal group As SunburstItemGroupInfo) As Color
+			If group.GroupLevel < maxcoloringIndex Then
+'INSTANT VB WARNING: Instant VB cannot determine whether both operands of this division are integer types - if they are then you should use the VB integer division operator:
+				Dim alpha As Integer = 255 * (group.MaxGroupLevel - group.GroupLevel + 1) / (group.MaxGroupLevel + 1)
+				Return Color.FromArgb(alpha, defaultColor)
+			End If
+			If TypeOf item.Tag Is DashboardFlatDataSourceRow Then
+				Dim row As DashboardFlatDataSourceRow = TryCast(item.Tag, DashboardFlatDataSourceRow)
+				Dim colorData As Object = flatData.GetValue(flatData.GetColoringColumn().Name, row)
+				If colorData IsNot Nothing Then
+					Return Color.FromArgb(DirectCast(colorData, Integer))
+				End If
+			End If
+			If TypeOf item.Tag Is List(Of Object) Then
+				Dim colors As IEnumerable(Of Integer) = (TryCast(item.Tag, List(Of Object))).OfType(Of DashboardFlatDataSourceRow)().Select(Function(row) flatData.GetValue(flatData.GetColoringColumn().Name, row)).OfType(Of Integer)().Distinct()
+				If colors.Count() = 1 Then
+					Return Color.FromArgb(colors.First())
+				End If
+			End If
+			Return defaultColor
+		End Function
+	End Class
 End Namespace

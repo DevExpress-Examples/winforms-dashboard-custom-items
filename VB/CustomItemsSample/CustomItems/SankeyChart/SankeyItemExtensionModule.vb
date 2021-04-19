@@ -1,11 +1,10 @@
-﻿Imports Microsoft.VisualBasic
-Imports System
-Imports DevExpress.DashboardCommon
+﻿Imports DevExpress.DashboardCommon
 Imports DevExpress.DashboardWin
 
 Namespace CustomItemsSample
 	Public Class SankeyItemExtensionModule
 		Implements IExtensionModule
+
 		Private dashboardControl As IDashboardControl
 		Public Sub AttachViewer(ByVal viewer As DashboardViewer) Implements IExtensionModule.AttachViewer
 			AttachDashboardControl(viewer)
@@ -33,7 +32,7 @@ Namespace CustomItemsSample
 			End If
 		End Sub
 		Private Sub OnCustomDashboardItemControlCreating(ByVal sender As Object, ByVal e As CustomDashboardItemControlCreatingEventArgs)
-			Dim dashboardControl As IDashboardControl = CType(sender, IDashboardControl)
+			Dim dashboardControl As IDashboardControl = DirectCast(sender, IDashboardControl)
 			If e.MetadataType Is GetType(SankeyItemMetadata) Then
 				e.CustomControlProvider = New SankeyItemControlProvider(TryCast(dashboardControl.Dashboard.Items(e.DashboardItemName), CustomDashboardItem(Of SankeyItemMetadata)))
 			End If

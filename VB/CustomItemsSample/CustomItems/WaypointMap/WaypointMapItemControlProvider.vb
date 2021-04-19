@@ -1,5 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports DevExpress.DashboardCommon
+﻿Imports DevExpress.DashboardCommon
 Imports DevExpress.DashboardWin
 Imports DevExpress.XtraMap
 Imports DevExpress.XtraReports.UI
@@ -12,6 +11,7 @@ Imports System.Windows.Forms
 Namespace CustomItemsSample
 	Public Class WaypointMapItemControlProvider
 		Inherits CustomControlProviderBase
+
 		Private ReadOnly defaultLineColor As Color = Color.FromArgb(125, 255, 212, 106)
 		Private ReadOnly highlightLineColor As Color = Color.FromArgb(200, 255, 212, 106)
 		Private ReadOnly SelectionLineColor As Color = Color.FromArgb(255, 255, 212, 106)
@@ -62,8 +62,8 @@ Namespace CustomItemsSample
 			skipSelectionEvent = True
 			vectorLayer.SelectedItems.Clear()
 			Dim selectedRows As IList(Of DashboardFlatDataSourceRow) = selection.AsDashboardFlatDataSourceRows(flatData)
-            Dim selectedLines = mapItemStorage.Items.Where(Function(item) selectedRows.Contains(CType(item.Tag, DashboardFlatDataSourceRow)))
-            vectorLayer.SelectedItems.AddRange(selectedLines.ToList())
+			Dim selectedLines = mapItemStorage.Items.Where(Function(item) selectedRows.Contains(item.Tag))
+			vectorLayer.SelectedItems.AddRange(selectedLines.ToList())
 			skipSelectionEvent = False
 		End Sub
 		Public Overrides Function GetPrintableControl(ByVal customItemData As CustomItemData, ByVal exportInfo As CustomItemExportInfo) As XRControl

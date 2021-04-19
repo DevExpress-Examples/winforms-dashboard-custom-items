@@ -1,6 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports System
-Namespace CustomItemsSample
+﻿Namespace CustomItemsSample
 	Partial Public Class Form1
 		''' <summary>
 		''' Required designer variable.
@@ -32,7 +30,7 @@ Namespace CustomItemsSample
 			' dashboardDesigner1
 			' 
 			Me.dashboardDesigner1.AllowInspectAggregatedData = True
-			Me.dashboardDesigner1.Appearance.BackColor = System.Drawing.Color.FromArgb((CInt(Fix((CByte(240))))), (CInt(Fix((CByte(240))))), (CInt(Fix((CByte(240))))))
+			Me.dashboardDesigner1.Appearance.BackColor = System.Drawing.Color.FromArgb((CInt((CByte(240)))), (CInt((CByte(240)))), (CInt((CByte(240)))))
 			Me.dashboardDesigner1.Appearance.Options.UseBackColor = True
 			Me.dashboardDesigner1.AsyncMode = True
 			Me.dashboardDesigner1.DataSourceOptions.ObjectDataSourceLoadingBehavior = DevExpress.DataAccess.DocumentLoadingBehavior.LoadAsIs
@@ -42,7 +40,8 @@ Namespace CustomItemsSample
 			Me.dashboardDesigner1.Name = "dashboardDesigner1"
 			Me.dashboardDesigner1.Size = New System.Drawing.Size(1013, 557)
 			Me.dashboardDesigner1.TabIndex = 0
-'			Me.dashboardDesigner1.DataLoading += New DevExpress.DashboardCommon.DataLoadingEventHandler(Me.dashboardDesigner1_DataLoading);
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.dashboardDesigner1.DataLoading += new DevExpress.DashboardCommon.DataLoadingEventHandler(this.dashboardDesigner1_DataLoading);
 			' 
 			' Form1
 			' 

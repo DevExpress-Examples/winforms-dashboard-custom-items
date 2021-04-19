@@ -1,5 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports System.Collections.Generic
+﻿Imports System.Collections.Generic
 Imports System.Drawing
 Imports System.Linq
 Imports System.Windows.Forms
@@ -14,6 +13,7 @@ Imports DevExpress.XtraReports.UI
 Namespace CustomItemsSample
 	Public Class SankeyItemControlProvider
 		Inherits CustomControlProviderBase
+
 		Private flatData As DashboardFlatDataSource
 		Private multiDimensionalData As MultiDimensionalData
 		Private sankey As SankeyDiagramControl
@@ -49,7 +49,7 @@ Namespace CustomItemsSample
 		Public Overrides Sub SetSelection(ByVal selection As CustomItemSelection)
 			Dim selectedRows As IList(Of DashboardFlatDataSourceRow) = selection.AsDashboardFlatDataSourceRows(flatData)
 			sankey.SelectedItems.Clear()
-			selectedRows.ForEach(Function(r) sankey.SelectedItems.Add(r))
+			selectedRows.ForEach(Sub(r) sankey.SelectedItems.Add(r))
 		End Sub
 		Public Overrides Function GetPrintableControl(ByVal customItemData As CustomItemData, ByVal exportInfo As CustomItemExportInfo) As XRControl
 			Dim container As New PrintableComponentContainer()
@@ -126,26 +126,26 @@ Namespace CustomItemsSample
 	End Class
 	Friend Class SankeyItemColorizer
 		Implements ISankeyColorizer
+
 		Private ReadOnly nodeDefaultColor As Color = Color.FromArgb(255, 95, 139, 149)
 		Private ReadOnly flatData As DashboardFlatDataSource
 
 		Public Sub New(ByVal flatData As DashboardFlatDataSource)
 			Me.flatData = flatData
 		End Sub
-        Public Function GetLinkSourceColor(ByVal link As SankeyLink) As Color Implements ISankeyColorizer.GetLinkSourceColor
-            Return GetLinkColorBase(link)
-        End Function
-        Public Function GetLinkTargetColor(ByVal link As SankeyLink) As Color Implements ISankeyColorizer.GetLinkTargetColor
-            Return GetLinkColorBase(link)
-        End Function
-        Function GetLinkColorBase(ByVal link As SankeyLink) As Color
-            Dim row As DashboardFlatDataSourceRow = TryCast(link.Tags(0), DashboardFlatDataSourceRow)
-            Dim colorData As Integer = CInt(Fix(flatData.GetValue(flatData.GetColoringColumn().Name, row)))
-            Return Color.FromArgb(colorData)
-        End Function
-        Public Function GetNodeColor(ByVal info As SankeyNode) As Color Implements ISankeyColorizer.GetNodeColor
-            Return nodeDefaultColor
-        End Function
-
-    End Class
+		Public Function GetLinkSourceColor(ByVal link As SankeyLink) As Color
+			Return GetLinkColorBase(link)
+		End Function
+		Public Function GetLinkTargetColor(ByVal link As SankeyLink) As Color
+			Return GetLinkColorBase(link)
+		End Function
+		Public Function GetLinkColorBase(ByVal link As SankeyLink) As Color
+			Dim row As DashboardFlatDataSourceRow = TryCast(link.Tags(0), DashboardFlatDataSourceRow)
+			Dim colorData As Integer = CInt(Math.Truncate(flatData.GetValue(flatData.GetColoringColumn().Name, row)))
+			Return Color.FromArgb(colorData)
+		End Function
+		Public Function GetNodeColor(ByVal info As SankeyNode) As Color
+			Return nodeDefaultColor
+		End Function
+	End Class
 End Namespace

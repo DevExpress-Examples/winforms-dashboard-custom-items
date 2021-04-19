@@ -1,13 +1,14 @@
-﻿Imports Microsoft.VisualBasic
-Imports DevExpress.DashboardCommon
+﻿Imports DevExpress.DashboardCommon
 Imports System.ComponentModel
 
 Namespace CustomItemsSample
-    <DisplayName("Sunburst"), CustomItemDescription("Sunburst description"), CustomItemImage("SunburstCustomItem.svg")>
-    Public Class SunburstItemMetadata
+	<DisplayName("Sunburst"), CustomItemDescription("Sunburst description"), CustomItemImage("CustomItemsSample.Images.SunburstCustomItem.svg")>
+	Public Class SunburstItemMetadata
 		Inherits CustomItemMetadata
-		Private ReadOnly arguments_Renamed As New DimensionCollection()
-		<DisplayName("Value"), EmptyDataItemPlaceholder("Value")> _
+
+'INSTANT VB NOTE: The field arguments was renamed since Visual Basic does not allow fields to have the same name as other class members:
+		Private ReadOnly arguments_Conflict As New DimensionCollection()
+		<DisplayName("Value"), EmptyDataItemPlaceholder("Value"), >
 		Public Property Value() As Measure
 			Get
 				Return GetPropertyValue(Of Measure)()
@@ -16,10 +17,10 @@ Namespace CustomItemsSample
 				SetPropertyValue(value)
 			End Set
 		End Property
-		<DisplayName("Arguments"), EmptyDataItemPlaceholder("Argument"), SupportColoring(DefaultColoringMode.None), SupportInteractivity> _
+		<DisplayName("Arguments"), EmptyDataItemPlaceholder("Argument"), SupportColoring(DefaultColoringMode.None), SupportInteractivity>
 		Public ReadOnly Property Arguments() As DimensionCollection
 			Get
-				Return arguments_Renamed
+				Return arguments_Conflict
 			End Get
 		End Property
 	End Class

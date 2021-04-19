@@ -1,11 +1,11 @@
-﻿Imports Microsoft.VisualBasic
-Imports System.Windows.Forms
+﻿Imports System.Windows.Forms
 Imports DevExpress.DashboardCommon
 Imports DevExpress.DashboardWin
 
 Namespace CustomItemsSample
 	Partial Public Class Form1
 		Inherits Form
+
 		Public Sub New()
 			InitializeComponent()
 
@@ -16,9 +16,9 @@ Namespace CustomItemsSample
 			SunburstItemModule.AttachDesigner(dashboardDesigner1)
 			SankeyItemModule.AttachDesigner(dashboardDesigner1)
 			WaypointMapItemModule.AttachDesigner(dashboardDesigner1)
-            dashboardDesigner1.CreateRibbon()
-            dashboardDesigner1.CreateCustomItemsBars()
-            dashboardDesigner1.LoadDashboard("..\..\CustomItems.xml")
+			dashboardDesigner1.CreateRibbon()
+			dashboardDesigner1.CreateCustomItemsBars()
+			dashboardDesigner1.LoadDashboard("..\..\CustomItems.xml")
 		End Sub
 
 		Private Sub dashboardDesigner1_DataLoading(ByVal sender As Object, ByVal e As DataLoadingEventArgs) Handles dashboardDesigner1.DataLoading

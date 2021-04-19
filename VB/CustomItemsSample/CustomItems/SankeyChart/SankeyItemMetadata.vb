@@ -1,12 +1,12 @@
-﻿Imports Microsoft.VisualBasic
-Imports System.ComponentModel
+﻿Imports System.ComponentModel
 Imports DevExpress.DashboardCommon
 
 Namespace CustomItemsSample
-    <DisplayName("Sankey"), CustomItemDescription("Sankey description"), CustomItemImage("SankeyCustomItem.svg")>
-    Public Class SankeyItemMetadata
+	<DisplayName("Sankey"), CustomItemDescription("Sankey description"), CustomItemImage("CustomItemsSample.Images.SankeyCustomItem.svg")>
+	Public Class SankeyItemMetadata
 		Inherits CustomItemMetadata
-		<DisplayName("Weight"), EmptyDataItemPlaceholder("Weight")> _
+
+		<DisplayName("Weight"), EmptyDataItemPlaceholder("Weight")>
 		Public Property Weight() As Measure
 			Get
 				Return GetPropertyValue(Of Measure)()
@@ -15,7 +15,7 @@ Namespace CustomItemsSample
 				SetPropertyValue(value)
 			End Set
 		End Property
-		<DisplayName("Target"), EmptyDataItemPlaceholder("Target"), SupportColoring(DefaultColoringMode.None), SupportInteractivity> _
+		<DisplayName("Target"), EmptyDataItemPlaceholder("Target"), SupportColoring(DefaultColoringMode.None), SupportInteractivity>
 		Public Property Target() As Dimension
 			Get
 				Return GetPropertyValue(Of Dimension)()
@@ -24,7 +24,7 @@ Namespace CustomItemsSample
 				SetPropertyValue(value)
 			End Set
 		End Property
-		<DisplayName("Source"), EmptyDataItemPlaceholder("Source"), SupportColoring(DefaultColoringMode.Hue), SupportInteractivity> _
+		<DisplayName("Source"), EmptyDataItemPlaceholder("Source"), SupportColoring(DefaultColoringMode.Hue), SupportInteractivity>
 		Public Property Source() As Dimension
 			Get
 				Return GetPropertyValue(Of Dimension)()

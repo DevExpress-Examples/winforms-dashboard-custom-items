@@ -1,5 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports DevExpress.DashboardCommon
+﻿Imports DevExpress.DashboardCommon
 Imports DevExpress.XtraEditors
 Imports System
 Imports System.Collections.Generic
@@ -8,14 +7,12 @@ Imports System.Threading.Tasks
 Imports System.Windows.Forms
 
 Namespace CustomItemsSample
-	Friend NotInheritable Class Program
+	Friend Module Program
 		''' <summary>
 		''' The main entry point for the application.
 		''' </summary>
-		Private Sub New()
-		End Sub
-		<STAThread> _
-		Shared Sub Main()
+		<STAThread>
+		Sub Main()
 			WindowsFormsSettings.SetDPIAware()
 			Application.EnableVisualStyles()
 			Application.SetCompatibleTextRenderingDefault(False)
@@ -24,5 +21,5 @@ Namespace CustomItemsSample
 			Dashboard.CustomItemMetadataTypes.Register(Of WaypointMapItemMetadata)()
 			Application.Run(New Form1())
 		End Sub
-	End Class
+	End Module
 End Namespace

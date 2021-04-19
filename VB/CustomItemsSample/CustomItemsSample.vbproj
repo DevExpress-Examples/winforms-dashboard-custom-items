@@ -6,18 +6,16 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{932192EB-5E81-4CBA-999D-B2F5C73FFC81}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <AssemblyName>CustomItemsSample</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
     <OptionExplicit>On</OptionExplicit>
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
     <OptionInfer>On</OptionInfer>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -28,6 +26,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <ErrorReport>prompt</ErrorReport>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -37,147 +36,196 @@
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <ErrorReport>prompt</ErrorReport>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
   </PropertyGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Charts.v21.1.Core, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.Charts.v21.1.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Dashboard.v21.1.Core, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.Dashboard.v21.1.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Dashboard.v21.1.Win, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.Dashboard.v21.1.Win.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Data.Desktop.v21.1, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.Data.Desktop.v21.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Data.v21.1, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.Data.v21.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.DataAccess.v21.1, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.DataAccess.v21.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.DataAccess.v21.1.UI, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.DataAccess.v21.1.UI.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Map.v21.1.Core, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.Map.v21.1.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Office.v21.1.Core, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.Office.v21.1.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.PivotGrid.v21.1.Core, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.PivotGrid.v21.1.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Printing.v21.1.Core, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.Printing.v21.1.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.RichEdit.v21.1.Core, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.RichEdit.v21.1.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Sparkline.v21.1.Core, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.Sparkline.v21.1.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.TreeMap.v21.1.Core, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.TreeMap.v21.1.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Utils.v21.1, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.Utils.v21.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Utils.v21.1.UI, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.Utils.v21.1.UI.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Xpo.v21.1, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.Xpo.v21.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraBars.v21.1, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.XtraBars.v21.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraCharts.v21.1, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.XtraCharts.v21.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraCharts.v21.1.UI, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.XtraCharts.v21.1.UI.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraCharts.v21.1.Wizard, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.XtraCharts.v21.1.Wizard.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraEditors.v21.1, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.XtraEditors.v21.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraGauges.v21.1.Core, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.XtraGauges.v21.1.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraGauges.v21.1.Presets, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.XtraGauges.v21.1.Presets.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraGauges.v21.1.Win, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.XtraGauges.v21.1.Win.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraGrid.v21.1, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.XtraGrid.v21.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraLayout.v21.1, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.XtraLayout.v21.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraMap.v21.1, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.XtraMap.v21.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraPivotGrid.v21.1, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.XtraPivotGrid.v21.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraPrinting.v21.1, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.XtraPrinting.v21.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraReports.v21.1, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.XtraReports.v21.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraRichEdit.v21.1, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.XtraRichEdit.v21.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraTreeList.v21.1, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.XtraTreeList.v21.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraTreeMap.v21.1, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.XtraTreeMap.v21.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraTreeMap.v21.1.UI, Version=21.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <Private>True</Private>
+      <HintPath>C:\DXDlls\21.1.2\DevExpress.XtraTreeMap.v21.1.UI.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -214,7 +262,6 @@
     </Compile>
     <Compile Include="Program.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
-    <Content Include="CustomItems.xml" />
     <EmbeddedResource Include="Images\SankeyCustomItem.svg" />
     <EmbeddedResource Include="Images\SunburstCustomItem.svg" />
     <EmbeddedResource Include="Images\WaypointCustomItem.svg" />
@@ -226,8 +273,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="My Project\Resources.Designer.vb">
@@ -239,6 +287,7 @@
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My</CustomToolNamespace>
     </None>
     <Compile Include="My Project\Settings.Designer.vb">
       <AutoGen>True</AutoGen>
