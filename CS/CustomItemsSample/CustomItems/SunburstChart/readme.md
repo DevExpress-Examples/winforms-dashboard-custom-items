@@ -1,6 +1,6 @@
 # Custom Sunburst Item
 
-![Sunbusrst](../../../../images/SunBusrst.png)
+![Sunbusrst](../../../../images/SunBurst.png)
 
 A custom Sunburst item supports the following capabilities:
 
