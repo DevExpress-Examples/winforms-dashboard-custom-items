@@ -6,8 +6,8 @@ A custom WaypointMap item supports the following capabilities:
 * [Master-Filtering](http://docs.devexpress.devx/Dashboard/15702/winforms-dashboard/winforms-designer/create-dashboards-in-the-winforms-designer/interactivity/master-filtering?v=21.1)
  
 
-The WayPoint Map Item uses tile images from the [MS Bing Maps](https://www.bing.com/maps/) service and requires Bing Maps key. Enter your key in the `WaypointMapItemExtensionModule.OnCustomDashboardItemControlCreating` method. 
-Refer to the following article for details: [How to: Get a Bing Maps Key](https://docs.devexpress.com/WindowsForms/15102/controls-and-libraries/map-control/examples/general/how-to-get-a-bing-maps-key).
+The WayPoint Map Item uses tile images from the [MS Bing Maps](https://www.bing.com/maps/) service and requires a Bing Maps key. Enter your key in the `WaypointMapItemExtensionModule.OnCustomDashboardItemControlCreating` method. 
+Refer to the following article for more information: [How to: Get a Bing Maps Key](https://docs.devexpress.com/WindowsForms/15102/controls-and-libraries/map-control/examples/general/how-to-get-a-bing-maps-key).
 
 
 ## Example Structure
@@ -20,8 +20,8 @@ The WaypointMap module consists of the following classes:
 
 * [WaypointMapItemControlProvider](WaypointMapItemControlProvider.cs)
 
-    Configures a custom control that displays the WaypointMap custom item. The [CustomControlProviderBase.UpdateControl(CustomItemData)](http://docs.devexpress.devx/Dashboard/DevExpress.DashboardWin.CustomControlProviderBase.UpdateControl(DevExpress.DashboardCommon.CustomItemData)?v=21.1&p=netframework) method is called each time when custom item's data or settings change. The method supplies calculated data for a custom item based on measures and dimensions that are specified in `WaypointMapItemMetadata`. The [GetPrintableControl](http://docs.devexpress.devx/Dashboard/DevExpress.DashboardWin.CustomControlProviderBase.GetPrintableControl(DevExpress.DashboardCommon.CustomItemData-DevExpress.DashboardCommon.CustomItemExportInfo)?v=21.1&p=netframework) method exports the custom item. 
-The `SetSelection()` method applies the element selection according to the master filter state. The [MapControl.SelectionChanged](http://docs.devexpress.devx/WindowsForms/DevExpress.XtraMap.MapControl.SelectionChanged?p=netframework) event processes the element selection to apply the master filter to the dashboard.
+    Configures a custom control that displays the WaypointMap custom item. The [CustomControlProviderBase.UpdateControl(CustomItemData)](http://docs.devexpress.devx/Dashboard/DevExpress.DashboardWin.CustomControlProviderBase.UpdateControl(DevExpress.DashboardCommon.CustomItemData)?v=21.1&p=netframework) method is called each time the custom item's data or settings change. The method supplies calculated data for a custom item based on measures and dimensions specified in `WaypointMapItemMetadata`. The [GetPrintableControl](http://docs.devexpress.devx/Dashboard/DevExpress.DashboardWin.CustomControlProviderBase.GetPrintableControl(DevExpress.DashboardCommon.CustomItemData-DevExpress.DashboardCommon.CustomItemExportInfo)?v=21.1&p=netframework) method exports the custom item. 
+The `SetSelection()` method applies element selection according to the master filter state. The [MapControl.SelectionChanged](http://docs.devexpress.devx/WindowsForms/DevExpress.XtraMap.MapControl.SelectionChanged?p=netframework) event processes element selection and applies the master filter to the dashboard.
 
 
 * [WaypointMapItemExtensionModule](WaypointMapItemExtensionModule.cs)
@@ -31,7 +31,7 @@ The `SetSelection()` method applies the element selection according to the maste
 ## Integrate the WaypointMap Module 
 
 * Add the `WaypointMap` module to your solution.
-* Add a reference to this project to References in your project with a dashboard control.
+* Add a reference to this project to References in your project.
 * Call the following code to create to register the `WaypointMapItemMetadata` type in your application:
 
 **C# code**:
