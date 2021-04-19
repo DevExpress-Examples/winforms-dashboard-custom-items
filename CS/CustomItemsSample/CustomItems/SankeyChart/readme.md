@@ -15,8 +15,8 @@ The SankeyChart module consists of the following classes:
 
 * [SankeyItemControlProvider](SankeyItemControlProvider.cs)
 
-    Configures a custom control that displays the Sankey custom item. The [CustomControlProviderBase.UpdateControl(CustomItemData)](http://docs.devexpress.devx/Dashboard/DevExpress.DashboardWin.CustomControlProviderBase.UpdateControl(DevExpress.DashboardCommon.CustomItemData)?v=21.1&p=netframework) method is called each time when custom item's data or settings change. The method supplies calculated data for a custom item based on measures and dimensions that are specified in `SankeyItemMetadata`. The [GetPrintableControl](http://docs.devexpress.devx/Dashboard/DevExpress.DashboardWin.CustomControlProviderBase.GetPrintableControl(DevExpress.DashboardCommon.CustomItemData-DevExpress.DashboardCommon.CustomItemExportInfo)?v=21.1&p=netframework) method exports the custom item. 
-The `SetSelection()` method applies the element selection according to the master filter state. The `SelectedItemsChanged` event processes the element selection to apply the master filter to the dashboard.
+    Configures a custom control that displays the Sankey custom item. The [CustomControlProviderBase.UpdateControl(CustomItemData)](http://docs.devexpress.devx/Dashboard/DevExpress.DashboardWin.CustomControlProviderBase.UpdateControl(DevExpress.DashboardCommon.CustomItemData)?v=21.1&p=netframework) method is called each time the custom item's data or settings change. The method supplies calculated data for a custom item based on measures and dimensions specified in `SankeyItemMetadata`. The [GetPrintableControl](http://docs.devexpress.devx/Dashboard/DevExpress.DashboardWin.CustomControlProviderBase.GetPrintableControl(DevExpress.DashboardCommon.CustomItemData-DevExpress.DashboardCommon.CustomItemExportInfo)?v=21.1&p=netframework) method exports the custom item. 
+The `SetSelection()` method applies element selection according to the master filter state. The `SelectedItemsChanged` event processes element selection to apply the master filter to the dashboard.
 
 
 * [SankeyItemExtensionModule](SankeyItemExtensionModule.cs)
@@ -27,7 +27,7 @@ The `SetSelection()` method applies the element selection according to the maste
 
 * Add the `SankeyChart` module to your solution.
 * Add a reference to this project to References in your project with dashboard control.
-* Call the following code to create to register the `SankeyItemMetadata` type in your application:
+* Call the following code to register the `SankeyItemMetadata` type in your application:
 
 **C# code**:
 ```csharp
