@@ -1,4 +1,7 @@
 # Custom Sunburst Item
+
+![Sunbusrst](../../../../images/Sunbusrst.png)
+
 A custom Sunburst item supports the following capabilities:
 
 * [Export](http://docs.devexpress.devx/Dashboard/15187/winforms-dashboard/winforms-designer/create-dashboards-in-the-winforms-designer/printing-and-exporting?v=21.1&p=netframework)
