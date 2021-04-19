@@ -5,9 +5,9 @@
 
 # WinForms Dashboard - Custom Items
 
-The following example shows how you can implement a custom dashboard item in a WinForms application.The custom item allows you to embed any WinForms UI control in a dashboard. You can interact with custom items in the Dashboard Designer just like with any built-in item.
+The following example shows how to implement a custom dashboard item in a WinForms application. Custom items allow you to embed any WinForms UI control in a dashboard. You can interact with custom items in the Dashboard Designer just like with any built-in item.
 
-This repository contains the following custom dashboard items that allow you to add the additional functionality to the WinForms Dashboard:
+This repository contains the following custom dashboard items that allow you to add additional functionality to the WinForms Dashboard:
 
 * [Sankey diagram](./CS/CustomItemsSample/CustomItems/SankeyChart/readme.md)
 
