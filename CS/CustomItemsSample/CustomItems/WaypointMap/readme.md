@@ -32,7 +32,7 @@ The `SetSelection()` method applies element selection according to the master fi
 
 * Add the `WaypointMap` module to your solution.
 * Add a reference to this project to References in your project.
-* Call the following code to create to register the `WaypointMapItemMetadata` type in your application:
+* Call the following code to register the `WaypointMapItemMetadata` type in your application:
 
 **C# code**:
 ```csharp
