@@ -6,8 +6,8 @@ A custom WaypointMap item supports the following capabilities:
 * [Master-Filtering](http://docs.devexpress.devx/Dashboard/15702/winforms-dashboard/winforms-designer/create-dashboards-in-the-winforms-designer/interactivity/master-filtering?v=21.1)
  
 
-Map applications require a **Bing Maps key** to use the Bing Maps' image BingMapDataProvider and GIS BingSearchDataProvider, BingGeocodeDataProvider, BingRouteDataProvider, and BingElevationDataProvider data providers.
-Refer to the following article for details: [How to: Get a Bing Maps Key](https://docs.devexpress.com/WindowsForms/15102/controls-and-libraries/map-control/examples/general/how-to-get-a-bing-maps-key)
+The WayPoint Map Item uses tile images from the [MS Bing Maps](https://www.bing.com/maps/) service and requires Bing Maps key. Enter your key in the `WaypointMapItemExtensionModule.OnCustomDashboardItemControlCreating` method. 
+Refer to the following article for details: [How to: Get a Bing Maps Key](https://docs.devexpress.com/WindowsForms/15102/controls-and-libraries/map-control/examples/general/how-to-get-a-bing-maps-key).
 
 
 ## Example Structure

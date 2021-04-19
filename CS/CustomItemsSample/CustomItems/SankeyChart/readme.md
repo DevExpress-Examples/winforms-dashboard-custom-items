@@ -79,5 +79,5 @@ public Form1() {
 Public Sub New()
 		InitializeComponent()
 		SankeyItemModule.AttachDesigner(dashboardDesigner1)
-End Sub
+End Sub 
 ```
