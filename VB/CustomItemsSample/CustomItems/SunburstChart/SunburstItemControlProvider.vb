@@ -55,8 +55,8 @@ Namespace CustomItemsSample
 		End Sub
 		Public Overrides Sub SetSelection(ByVal selection As CustomItemSelection)
 			skipSelectionEvent = True
-			Dim selectedRows As IList(Of DashboardFlatDataSourceRow) = selection.AsDashboardFlatDataSourceRows(flatData)
-			sunburst.SelectedItems.Clear()
+            Dim selectedRows As IList(Of DashboardFlatDataSourceRow) = selection.GetDashboardFlatDataSourceRows(flatData)
+            sunburst.SelectedItems.Clear()
 			selectedRows.ForEach(Function(r) sunburst.SelectedItems.Add(r))
 			skipSelectionEvent = False
 		End Sub

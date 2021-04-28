@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -212,9 +212,6 @@
     <EmbeddedResource Include="Images\SankeyCustomItem.svg" />
     <EmbeddedResource Include="Images\SunburstCustomItem.svg" />
     <EmbeddedResource Include="Images\WaypointCustomItem.svg" />
-    <EmbeddedResource Include="Images\PieLabelPosition.svg" />
-    <EmbeddedResource Include="Images\MapOnline.svg" />
-    <EmbeddedResource Include="Images\Funnel.svg" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,6 +240,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -54,7 +54,7 @@ namespace CustomItemsSample {
         public override void SetSelection(CustomItemSelection selection) {
             skipSelectionEvent = true;
             vectorLayer.SelectedItems.Clear();
-            IList<DashboardFlatDataSourceRow> selectedRows = selection.AsDashboardFlatDataSourceRows(flatData);
+            IList<DashboardFlatDataSourceRow> selectedRows = selection.GetDashboardFlatDataSourceRows(flatData);
             var selectedLines = mapItemStorage.Items.Where(item => selectedRows.Contains(item.Tag));
             vectorLayer.SelectedItems.AddRange(selectedLines.ToList());
             skipSelectionEvent = false;

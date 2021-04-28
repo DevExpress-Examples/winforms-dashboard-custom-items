@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="Dashboard" />
+  <DataSources>
+    <ObjectDataSource Name="Export Data Source" ComponentName="dsExport" />
+    <ObjectDataSource Name="Continent Data Source" ComponentName="dsContinent" />
+    <FederationDataSource Name="Federation Data Source 1" ComponentName="dashboardFederationDataSource1">
+      <Sources>
+        <Source Name="Export Data Source">
+          <DataSource>dsExport</DataSource>
+          <DataMember></DataMember>
+        </Source>
+        <Source Name="Continent Data Source">
+          <DataSource>dsContinent</DataSource>
+          <DataMember></DataMember>
+        </Source>
+      </Sources>
+      <Queries>
+        <Query Alias="Export Data Source" QueryType="SelectNode">
+          <Root Alias="Export Data Source" QueryType="SourceNode" SourceName="Export Data Source" />
+          <SubNodes>
+            <JoinElement Condition="[[Continent Data Source\].[Country\]] = [[Export Data Source\].[Exporter\]]">
+              <Query Alias="Continent Data Source" QueryType="SourceNode" SourceName="Continent Data Source" />
+            </JoinElement>
+            <JoinElement Condition="[[Continent Data Source_1\].[Country\]] = [[Export Data Source\].[Importer\]]">
+              <Query Alias="Continent Data Source_1" QueryType="SourceNode" SourceName="Continent Data Source" />
+            </JoinElement>
+          </SubNodes>
+          <Expressions>
+            <Expression ExpressionType="SelectColumnExpression" Name="Continent" Alias="Importer Continent" NodeAlias="Continent Data Source_1" />
+            <Expression ExpressionType="SelectColumnExpression" Name="Continent" Alias="Exporter Continent" NodeAlias="Continent Data Source" />
+            <Expression ExpressionType="SelectColumnExpression" Name="Exporter" NodeAlias="Export Data Source" />
+            <Expression ExpressionType="SelectColumnExpression" Name="Importer" NodeAlias="Export Data Source" />
+            <Expression ExpressionType="SelectColumnExpression" Name="Sum" NodeAlias="Export Data Source" />
+            <Expression ExpressionType="SelectColumnExpression" Name="CapitalLocation" Alias="Exporter Location" NodeAlias="Continent Data Source" />
+            <Expression ExpressionType="SelectColumnExpression" Name="CapitalLocation" Alias="Importer Location" NodeAlias="Continent Data Source_1" />
+          </Expressions>
+        </Query>
+      </Queries>
+    </FederationDataSource>
+  </DataSources>
+  <Items>
+    <CustomItem ComponentName="funnelItemMetadataDashboardItem1" Name="Funnel " DataSource="dashboardFederationDataSource1" DataMember="Export Data Source" CustomItemType="FunnelItemMetadata">
+      <DataItems>
+        <Measure DataMember="Sum" DefaultId="DataItem0" />
+        <Dimension DataMember="Exporter" SortOrder="Descending" SortByMeasure="DataItem0" DefaultId="DataItem1" />
+      </DataItems>
+      <SliceTables>
+        <SliceTable Name="SliceTable1">
+          <Dimensions>
+            <Dimension DefaultId="DataItem1" />
+          </Dimensions>
+          <Measures>
+            <Measure DefaultId="DataItem0" />
+          </Measures>
+        </SliceTable>
+      </SliceTables>
+      <InteractivityTargets>
+        <Dimension DefaultId="DataItem1" />
+      </InteractivityTargets>
+      <ColoringDimensions>
+        <Dimension DefaultId="DataItem1" />
+      </ColoringDimensions>
+      <ColoringMeasures>
+        <Measure DefaultId="DataItem0" />
+      </ColoringMeasures>
+      <CustomMetadata>
+        <Value ItemType="Measure" DefaultId="DataItem0" />
+        <Arguments>
+          <Item1 ItemType="Dimension" DefaultId="DataItem1" />
+        </Arguments>
+      </CustomMetadata>
+    </CustomItem>
+    <CustomItem ComponentName="simpleTableMetadataDashboardItem1" Name="Simple Table " DataSource="dashboardFederationDataSource1" DataMember="Export Data Source" CustomItemType="SimpleTableMetadata">
+      <InteractivityOptions IsDrillDownEnabled="true" />
+      <DataItems>
+        <Measure DataMember="Sum" DefaultId="DataItem2" />
+        <Dimension DataMember="Exporter" SortOrder="Descending" DefaultId="DataItem1" />
+        <Dimension DataMember="Exporter Continent" DefaultId="DataItem0" />
+      </DataItems>
+      <SliceTables>
+        <SliceTable Name="SliceTable1">
+          <Dimensions>
+            <Dimension DefaultId="DataItem0" />
+            <Dimension DefaultId="DataItem1" />
+          </Dimensions>
+          <Measures>
+            <Measure DefaultId="DataItem2" />
+          </Measures>
+        </SliceTable>
+      </SliceTables>
+      <CustomMetadata>
+        <DimensionColumns>
+          <Item1 ItemType="Dimension" DefaultId="DataItem0" />
+          <Item2 ItemType="Dimension" DefaultId="DataItem1" />
+        </DimensionColumns>
+        <MeasureColumn ItemType="Measure" DefaultId="DataItem2" />
+      </CustomMetadata>
+    </CustomItem>
+    <CustomItem ComponentName="helloWorldItemMetadataDashboardItem1" Name="Hello World Item" CustomItemType="HelloWorldItemMetadata">
+      <SliceTables>
+        <SliceTable Name="SliceTable1" />
+      </SliceTables>
+    </CustomItem>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Weight="100">
+      <LayoutItem DashboardItem="funnelItemMetadataDashboardItem1" Weight="56.432360742705569" />
+      <LayoutGroup Orientation="Vertical" Weight="43.567639257294431">
+        <LayoutItem DashboardItem="simpleTableMetadataDashboardItem1" Weight="50.061349693251536" />
+        <LayoutItem DashboardItem="helloWorldItemMetadataDashboardItem1" Weight="49.938650306748464" />
+      </LayoutGroup>
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

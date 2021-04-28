@@ -1,13 +1,18 @@
-*Files to look at*:
-
-* [Form1.cs](./CS/CustomItemsSample/Form1.cs) (VB: [Form1.vb](./VB/CustomItemsSample/Form1.vb))
-* [Modules](./CS/CustomItemsSample/CustomItems/) (VB: [Modules](./VB/CustomItemsSample/CustomItems/))
 
 # WinForms Dashboard - Custom Items
 
 The following example shows how to implement a custom dashboard item in a WinForms application. Custom items allow you to embed any WinForms UI control in a dashboard. You can interact with custom items in the Dashboard Designer just like with any built-in item.
 
-This repository contains the following custom dashboard items that allow you to add additional functionality to the WinForms Dashboard:
+
+The example's solution contains two projects. 
+## CustomItemsSample
+
+*Files to look at*:
+
+* [Form1.cs](./CS/CustomItemsSample/Form1.cs) (VB: [Form1.vb](./VB/CustomItemsSample/Form1.vb))
+* [Modules](./CS/CustomItemsSample/CustomItems/) (VB: [Modules](./VB/CustomItemsSample/CustomItems/))
+
+This project contains the following custom dashboard items that allow you to add additional functionality to the WinForms Dashboard:
 
 * [Sankey diagram](./CS/CustomItemsSample/CustomItems/SankeyChart/readme.md)
 
@@ -19,3 +24,24 @@ This repository contains the following custom dashboard items that allow you to 
 
     A Waypoint map visualized data as linked points. 
 
+## TutorialsCustomItems
+
+*Files to look at*:
+
+* [Form1.cs](./CS/TutorialsCustomItems/Form1.cs) (VB: [Form1.vb](./VB/TutorialsCustomItems/Form1.vb))
+* [Modules](./CS/TutorialsCustomItems/CustomItems/) (VB: [Modules](./VB/TutorialsCustomItems/CustomItems/))
+
+
+This project contains the following custom dashboard items that allow you to add additional functionality to the WinForms Dashboard:
+
+* Hello World 
+
+    A custom item that displays the 'Hello World!' text. 
+
+* Simple Table 
+
+    A custom item based on the [Grid](http://docs.devexpress.devx/WindowsForms/DevExpress.XtraGrid.GridControl?v=21.1) control.
+
+* Funnel Chart 
+
+    A Funnel chart displays a wide area at the top, indicating the total points' value, while other areas are proportionally smaller.

@@ -49,7 +49,7 @@ namespace CustomItemsSample {
         }
         public override void SetSelection(CustomItemSelection selection) {
             skipSelectionEvent = true;
-            IList<DashboardFlatDataSourceRow> selectedRows = selection.AsDashboardFlatDataSourceRows(flatData);
+            IList<DashboardFlatDataSourceRow> selectedRows = selection.GetDashboardFlatDataSourceRows(flatData);
             sunburst.SelectedItems.Clear();
             selectedRows.ForEach(r => sunburst.SelectedItems.Add(r));
             skipSelectionEvent = false;
