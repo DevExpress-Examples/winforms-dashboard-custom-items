@@ -70,7 +70,7 @@ namespace TutorialsCustomItems{
         public override void SetSelection(CustomItemSelection selection)
         {
             chart.ClearSelection();
-            foreach (DashboardFlatDataSourceRow item in selection.GetDashboardFlatDataSourceRows(flatData))
+            foreach (DashboardFlatDataSourceRow item in selection.AsDashboardFlatDataSourceRows(flatData))
                 chart.SelectedItems.Add(item);
         }
         void ChartSelectedItemsChanging(object sender, SelectedItemsChangingEventArgs e)

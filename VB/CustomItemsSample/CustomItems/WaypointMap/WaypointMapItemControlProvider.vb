@@ -61,7 +61,7 @@ Namespace CustomItemsSample
 		Public Overrides Sub SetSelection(ByVal selection As CustomItemSelection)
 			skipSelectionEvent = True
 			vectorLayer.SelectedItems.Clear()
-            Dim selectedRows As IList(Of DashboardFlatDataSourceRow) = selection.GetDashboardFlatDataSourceRows(flatData)
+            Dim selectedRows As IList(Of DashboardFlatDataSourceRow) = selection.AsDashboardFlatDataSourceRows(flatData)
             Dim selectedLines = mapItemStorage.Items.Where(Function(item) selectedRows.Contains(CType(item.Tag, DashboardFlatDataSourceRow)))
             vectorLayer.SelectedItems.AddRange(selectedLines.ToList())
 			skipSelectionEvent = False

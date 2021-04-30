@@ -47,7 +47,7 @@ Namespace CustomItemsSample
 			End If
 		End Sub
 		Public Overrides Sub SetSelection(ByVal selection As CustomItemSelection)
-            Dim selectedRows As IList(Of DashboardFlatDataSourceRow) = selection.GetDashboardFlatDataSourceRows(flatData)
+            Dim selectedRows As IList(Of DashboardFlatDataSourceRow) = selection.AsDashboardFlatDataSourceRows(flatData)
             sankey.SelectedItems.Clear()
 			selectedRows.ForEach(Function(r) sankey.SelectedItems.Add(r))
 		End Sub

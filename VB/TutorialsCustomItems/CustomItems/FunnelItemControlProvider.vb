@@ -69,10 +69,10 @@ Namespace TutorialsCustomItems
 		#Region "MasterFiltering"
 		Public Overrides Sub SetSelection(ByVal selection As CustomItemSelection)
 			chart.ClearSelection()
-			For Each item As DashboardFlatDataSourceRow In selection.GetDashboardFlatDataSourceRows(flatData)
-				chart.SelectedItems.Add(item)
-			Next item
-		End Sub
+            For Each item As DashboardFlatDataSourceRow In selection.AsDashboardFlatDataSourceRows(flatData)
+                chart.SelectedItems.Add(item)
+            Next item
+        End Sub
 		Private Sub ChartSelectedItemsChanging(ByVal sender As Object, ByVal e As SelectedItemsChangingEventArgs)
 			If Interactivity.MasterFilterMode = DashboardItemMasterFilterMode.Single AndAlso e.NewItems.OfType(Of DashboardFlatDataSourceRow)().Count() = 0 Then
 				e.Cancel = True
