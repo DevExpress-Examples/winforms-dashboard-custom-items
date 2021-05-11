@@ -34,14 +34,14 @@ This project contains the following custom dashboard items that allow you to add
 
 This project contains the following custom dashboard items that allow you to add additional functionality to the WinForms Dashboard:
 
-* Hello World 
+* Hello World ([С#](./CS/TutorialsCustomItems/CustomItems/)/ [VB](./VB/TutorialsCustomItems/CustomItems/))
 
     A custom item that displays the 'Hello World!' text. 
 
-* Simple Table 
+* Simple Table ([С#](./CS/TutorialsCustomItems/CustomItems/)/ [VB](./VB/TutorialsCustomItems/CustomItems/))
 
     A custom item based on the [Grid](http://docs.devexpress.devx/WindowsForms/DevExpress.XtraGrid.GridControl?v=21.1) control.
 
-* Funnel Chart 
+* Funnel Chart ([С#](./CS/TutorialsCustomItems/CustomItems/)/ [VB](./VB/TutorialsCustomItems/CustomItems/))
 
     A Funnel chart displays a wide area at the top, indicating the total points' value, while other areas are proportionally smaller.
