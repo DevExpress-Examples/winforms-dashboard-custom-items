@@ -45,3 +45,7 @@ This project contains the following custom dashboard items that allow you to add
 * Funnel Chart ([С#](./CS/TutorialsCustomItems/CustomItems/)/ [VB](./VB/TutorialsCustomItems/CustomItems/))
 
     A Funnel chart displays a wide area at the top, indicating the total points' value, while other areas are proportionally smaller.
+
+## Documentation
+
+* [Custom Item](http://docs.devexpress.devx/Dashboard/403031/winforms-dashboard/winforms-designer/create-dashboards-in-the-winforms-designer/dashboard-item-settings/custom-item?v=21.1)
