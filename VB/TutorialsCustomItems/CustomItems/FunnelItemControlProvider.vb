@@ -36,31 +36,31 @@ Namespace TutorialsCustomItems
 			flatData = customItemData.GetFlatData(New DashboardFlatDataSourceOptions() With {.AddColoringColumns = True})
 			chart.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True
 			chart.Series.Clear()
-			Dim series As Series = ConfigurateSeries(flatData)
-			chart.Series.Add(series)
+            Dim series As Series = ConfigureSeries(flatData)
+            chart.Series.Add(series)
 		End Sub
 		Public Overrides Function GetPrintableControl(ByVal customItemData As CustomItemData, ByVal info As CustomItemExportInfo) As XRControl
 			Dim container As New PrintableComponentContainer()
 			container.PrintableComponent = chart
 			Return container
 		End Function
-		Private Function ConfigurateSeries(ByVal flatData As DashboardFlatDataSource) As Series
-			Dim series As New Series("A Funnel Series", ViewType.Funnel)
-			If dashboardItem.Metadata.Value IsNot Nothing AndAlso dashboardItem.Metadata.Arguments.Count > 0 Then
-				series.DataSource = flatData
-				series.ValueDataMembers.AddRange(dashboardItem.Metadata.Value.UniqueId)
-				If Interactivity.IsDrillDownEnabled Then
-					Dim drillDownLevel As Integer = Interactivity.GetCurrentDrillDownValues().Count
-					series.ArgumentDataMember = dashboardItem.Metadata.Arguments(drillDownLevel).UniqueId
-				Else
-					series.ArgumentDataMember = dashboardItem.Metadata.Arguments.Last().UniqueId
-				End If
-				series.ColorDataMember = flatData.GetColoringColumn(dashboardItem.Metadata.Value.UniqueId).Name
-			End If
-			CType(series.Label, FunnelSeriesLabel).Position = FunnelSeriesLabelPosition.Center
-			Return series
-		End Function
-		Private Sub CustomDrawSeriesPoint(ByVal sender As Object, ByVal e As CustomDrawSeriesPointEventArgs)
+        Private Function ConfigureSeries(ByVal flatData As DashboardFlatDataSource) As Series
+            Dim series As New Series("A Funnel Series", ViewType.Funnel)
+            If dashboardItem.Metadata.Value IsNot Nothing AndAlso dashboardItem.Metadata.Arguments.Count > 0 Then
+                series.DataSource = flatData
+                series.ValueDataMembers.AddRange(dashboardItem.Metadata.Value.UniqueId)
+                If Interactivity.IsDrillDownEnabled Then
+                    Dim drillDownLevel As Integer = Interactivity.GetCurrentDrillDownValues().Count
+                    series.ArgumentDataMember = dashboardItem.Metadata.Arguments(drillDownLevel).UniqueId
+                Else
+                    series.ArgumentDataMember = dashboardItem.Metadata.Arguments.Last().UniqueId
+                End If
+                series.ColorDataMember = flatData.GetColoringColumn(dashboardItem.Metadata.Value.UniqueId).Name
+            End If
+            CType(series.Label, FunnelSeriesLabel).Position = FunnelSeriesLabelPosition.Center
+            Return series
+        End Function
+        Private Sub CustomDrawSeriesPoint(ByVal sender As Object, ByVal e As CustomDrawSeriesPointEventArgs)
 			Dim row As DashboardFlatDataSourceRow = TryCast(e.SeriesPoint.Tag, DashboardFlatDataSourceRow)
 			Dim formattedValue As String = flatData.GetDisplayText(dashboardItem.Metadata.Value.UniqueId, row)
 			e.LabelText = e.SeriesPoint.Argument & " - " & formattedValue

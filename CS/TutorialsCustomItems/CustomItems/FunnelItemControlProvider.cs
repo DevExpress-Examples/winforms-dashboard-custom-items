@@ -31,7 +31,7 @@ namespace TutorialsCustomItems{
             flatData = customItemData.GetFlatData(new DashboardFlatDataSourceOptions() { AddColoringColumns = true });
             chart.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
             chart.Series.Clear();
-            Series series = ConfigurateSeries(flatData);
+            Series series = ConfigureSeries(flatData);
             chart.Series.Add(series);
         }
         public override XRControl GetPrintableControl(CustomItemData customItemData, CustomItemExportInfo info)
@@ -40,7 +40,7 @@ namespace TutorialsCustomItems{
             container.PrintableComponent = chart;
             return container;
         }
-        Series ConfigurateSeries(DashboardFlatDataSource flatData)
+        Series ConfigureSeries(DashboardFlatDataSource flatData)
         {
             Series series = new Series("A Funnel Series", ViewType.Funnel);
             if (dashboardItem.Metadata.Value != null && dashboardItem.Metadata.Arguments.Count > 0)
