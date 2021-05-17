@@ -18,7 +18,7 @@ namespace CustomItemsSample {
         CustomDashboardItem<SankeyItemMetadata> dashboardItem;
         ToolTipController toolTipController;
 
-        public override Control Control { get { return sankey; } }
+        protected override Control Control { get { return sankey; } }
 
         public SankeyItemControlProvider(CustomDashboardItem<SankeyItemMetadata> dashboardItem) {
             this.dashboardItem = dashboardItem;
@@ -31,7 +31,7 @@ namespace CustomItemsSample {
             sankey.SelectedItemsChanging += Sankey_SelectedItemsChanging;
             sankey.HighlightedItemsChanged += Sankey_HighlightedItemsChanged;
         }
-        public override void UpdateControl(CustomItemData customItemData) {
+        protected override void UpdateControl(CustomItemData customItemData) {
             multiDimensionalData = customItemData.GetMultiDimensionalData();
             sankey.DataSource = null;
             flatData = customItemData.GetFlatData(new DashboardFlatDataSourceOptions() { AddColoringColumns = true });
@@ -40,12 +40,12 @@ namespace CustomItemsSample {
                 SetSelectionMode();
             }
         }
-        public override void SetSelection(CustomItemSelection selection) {
-            IList<DashboardFlatDataSourceRow> selectedRows = selection.AsDashboardFlatDataSourceRows(flatData);
+        protected override void SetSelection(CustomItemSelection selection) {
+            IList<DashboardFlatDataSourceRow> selectedRows = selection.GetDashboardFlatDataSourceRows(flatData);
             sankey.SelectedItems.Clear();
             selectedRows.ForEach(r => sankey.SelectedItems.Add(r));
         }
-        public override XRControl GetPrintableControl(CustomItemData customItemData, CustomItemExportInfo exportInfo) {
+        protected override XRControl GetPrintableControl(CustomItemData customItemData, CustomItemExportInfo exportInfo) {
             PrintableComponentContainer container = new PrintableComponentContainer();
             container.PrintableComponent = sankey;
             return container;

@@ -20,7 +20,7 @@ Namespace TutorialsCustomItems.CustomItems
 		Inherits CustomControlProviderBase
 
 		Private textbox As MemoEdit
-		Public Overrides ReadOnly Property Control() As Control
+		Protected Overrides ReadOnly Property Control() As Control
 			Get
 				Return textbox
 			End Get

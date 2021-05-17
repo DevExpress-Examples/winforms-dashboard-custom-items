@@ -22,7 +22,7 @@ namespace TutorialsCustomItems.CustomItems
     public class HelloWorldItemProvider : CustomControlProviderBase
     {
         MemoEdit textbox;
-        public override Control Control { get { return textbox; } }
+        protected override Control Control { get { return textbox; } }
         public HelloWorldItemProvider()
         {
             textbox = new MemoEdit();

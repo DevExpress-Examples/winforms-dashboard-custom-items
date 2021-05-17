@@ -17,8 +17,8 @@ Namespace CustomItemsSample
 			SankeyItemModule.AttachDesigner(dashboardDesigner1)
 			WaypointMapItemModule.AttachDesigner(dashboardDesigner1)
             dashboardDesigner1.CreateRibbon()
-            dashboardDesigner1.CreateCustomItemsBars()
-            dashboardDesigner1.LoadDashboard("..\..\CustomItems.xml")
+			dashboardDesigner1.CreateCustomItemBars()
+			dashboardDesigner1.LoadDashboard("..\..\CustomItems.xml")
 		End Sub
 
 		Private Sub dashboardDesigner1_DataLoading(ByVal sender As Object, ByVal e As DataLoadingEventArgs) Handles dashboardDesigner1.DataLoading

@@ -33,7 +33,7 @@ Namespace TutorialsCustomItems.CustomItems
 
 		Private view As GridView
 		Private grid As GridControl
-		Public Overrides ReadOnly Property Control() As Control
+		Protected Overrides ReadOnly Property Control() As Control
 			Get
 				Return grid
 			End Get
@@ -48,7 +48,7 @@ Namespace TutorialsCustomItems.CustomItems
 		End Sub
 
 		Private DataSource As DashboardFlatDataSource
-		Public Overrides Sub UpdateControl(ByVal customItemData As CustomItemData)
+		Protected Overrides Sub UpdateControl(ByVal customItemData As CustomItemData)
 			Dim flatData As DashboardFlatDataSource = customItemData.GetFlatData()
 			DataSource = flatData
 			grid.DataSource = flatData

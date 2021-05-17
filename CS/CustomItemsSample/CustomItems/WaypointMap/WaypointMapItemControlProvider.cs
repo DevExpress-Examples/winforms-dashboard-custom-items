@@ -23,7 +23,7 @@ namespace CustomItemsSample {
         DashboardFlatDataSource flatData;
         bool skipSelectionEvent = false;
 
-        public override Control Control { get { return map; } }
+        protected override Control Control { get { return map; } }
         public WaypointMapItemControlProvider(CustomDashboardItem<WaypointMapItemMetadata> dashboardItem, string bingKey) {
             this.dashboardItem = dashboardItem;
             map = new MapControl();
@@ -41,7 +41,7 @@ namespace CustomItemsSample {
             map.Overlays.Add(overlay);
             map.SelectionChanged += Map_SelectionChanged;
         }
-        public override void UpdateControl(CustomItemData customItemData) {
+        protected override void UpdateControl(CustomItemData customItemData) {
             flatData = customItemData.GetFlatData();
             mapItemStorage.Items.BeginUpdate();
             mapItemStorage.Items.Clear();
@@ -51,15 +51,15 @@ namespace CustomItemsSample {
             map.ZoomToFitLayerItems();
             SetSelectionMode();
         }
-        public override void SetSelection(CustomItemSelection selection) {
+        protected override void SetSelection(CustomItemSelection selection) {
             skipSelectionEvent = true;
             vectorLayer.SelectedItems.Clear();
-            IList<DashboardFlatDataSourceRow> selectedRows = selection.AsDashboardFlatDataSourceRows(flatData);
+            IList<DashboardFlatDataSourceRow> selectedRows = selection.GetDashboardFlatDataSourceRows(flatData);
             var selectedLines = mapItemStorage.Items.Where(item => selectedRows.Contains(item.Tag));
             vectorLayer.SelectedItems.AddRange(selectedLines.ToList());
             skipSelectionEvent = false;
         }
-        public override XRControl GetPrintableControl(CustomItemData customItemData, CustomItemExportInfo exportInfo) {
+        protected override XRControl GetPrintableControl(CustomItemData customItemData, CustomItemExportInfo exportInfo) {
             PrintableComponentContainer container = new PrintableComponentContainer();
             container.PrintableComponent = map;
             return container;

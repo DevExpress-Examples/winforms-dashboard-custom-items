@@ -12,7 +12,7 @@ namespace CustomItemsSample {
         }
         public void AttachDesigner(DashboardDesigner designer) {
             AttachDashboardControl(designer);
-            designer.CreateCustomItemsBars(typeof(SankeyItemMetadata));
+            designer.CreateCustomItemBars(typeof(SankeyItemMetadata));
         }
         public void DetachDesigner() {
             Detach();

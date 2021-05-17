@@ -25,7 +25,7 @@ Namespace CustomItemsSample
 		Private flatData As DashboardFlatDataSource
 		Private emptyTitle As Title
 
-		Public Overrides ReadOnly Property Control() As Control
+		Protected Overrides ReadOnly Property Control() As Control
 			Get
 				Return sunburst
 			End Get
@@ -43,7 +43,7 @@ Namespace CustomItemsSample
 			sunburst.Titles.Add(emptyTitle)
 			AddHandler sunburst.MouseClick, AddressOf Sunburst_MouseClick
 		End Sub
-		Public Overrides Sub UpdateControl(ByVal customItemData As CustomItemData)
+		Protected Overrides Sub UpdateControl(ByVal customItemData As CustomItemData)
 			ClearDataBindings()
 			If ValidateBindings() Then
 				flatData = customItemData.GetFlatData(New DashboardFlatDataSourceOptions() With {.AddColoringColumns = True})
@@ -53,14 +53,14 @@ Namespace CustomItemsSample
 				SetSelectionMode()
 			End If
 		End Sub
-		Public Overrides Sub SetSelection(ByVal selection As CustomItemSelection)
+		Protected Overrides Sub SetSelection(ByVal selection As CustomItemSelection)
 			skipSelectionEvent = True
-            Dim selectedRows As IList(Of DashboardFlatDataSourceRow) = selection.AsDashboardFlatDataSourceRows(flatData)
-            sunburst.SelectedItems.Clear()
+			Dim selectedRows As IList(Of DashboardFlatDataSourceRow) = selection.GetDashboardFlatDataSourceRows(flatData)
+			sunburst.SelectedItems.Clear()
 			selectedRows.ForEach(Function(r) sunburst.SelectedItems.Add(r))
 			skipSelectionEvent = False
 		End Sub
-		Public Overrides Function GetPrintableControl(ByVal customItemData As CustomItemData, ByVal exportInfo As CustomItemExportInfo) As XRControl
+		Protected Overrides Function GetPrintableControl(ByVal customItemData As CustomItemData, ByVal exportInfo As CustomItemExportInfo) As XRControl
 			Dim container As New PrintableComponentContainer()
 			container.PrintableComponent = sunburst
 			Return container

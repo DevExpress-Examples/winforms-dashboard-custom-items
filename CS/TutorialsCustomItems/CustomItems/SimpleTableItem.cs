@@ -33,7 +33,7 @@ namespace TutorialsCustomItems.CustomItems
     {
         GridView view;
         GridControl grid;
-        public override Control Control { get { return grid; } }
+        protected override Control Control { get { return grid; } }
         public SimpleTableProvider()
         {
             grid = new GridControl();
@@ -45,7 +45,7 @@ namespace TutorialsCustomItems.CustomItems
         }
  
         DashboardFlatDataSource DataSource;
-        public override void UpdateControl(CustomItemData customItemData)
+        protected override void UpdateControl(CustomItemData customItemData)
         {
             DashboardFlatDataSource flatData = customItemData.GetFlatData();
             DataSource = flatData;

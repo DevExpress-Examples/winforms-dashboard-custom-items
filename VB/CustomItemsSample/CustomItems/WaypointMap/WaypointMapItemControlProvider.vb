@@ -25,7 +25,7 @@ Namespace CustomItemsSample
 		Private flatData As DashboardFlatDataSource
 		Private skipSelectionEvent As Boolean = False
 
-		Public Overrides ReadOnly Property Control() As Control
+		Protected Overrides ReadOnly Property Control() As Control
 			Get
 				Return map
 			End Get
@@ -47,7 +47,7 @@ Namespace CustomItemsSample
 			map.Overlays.Add(overlay)
 			AddHandler map.SelectionChanged, AddressOf Map_SelectionChanged
 		End Sub
-		Public Overrides Sub UpdateControl(ByVal customItemData As CustomItemData)
+		Protected Overrides Sub UpdateControl(ByVal customItemData As CustomItemData)
 			flatData = customItemData.GetFlatData()
 			mapItemStorage.Items.BeginUpdate()
 			mapItemStorage.Items.Clear()
@@ -58,15 +58,15 @@ Namespace CustomItemsSample
 			map.ZoomToFitLayerItems()
 			SetSelectionMode()
 		End Sub
-		Public Overrides Sub SetSelection(ByVal selection As CustomItemSelection)
+		Protected Overrides Sub SetSelection(ByVal selection As CustomItemSelection)
 			skipSelectionEvent = True
 			vectorLayer.SelectedItems.Clear()
-            Dim selectedRows As IList(Of DashboardFlatDataSourceRow) = selection.AsDashboardFlatDataSourceRows(flatData)
-            Dim selectedLines = mapItemStorage.Items.Where(Function(item) selectedRows.Contains(CType(item.Tag, DashboardFlatDataSourceRow)))
-            vectorLayer.SelectedItems.AddRange(selectedLines.ToList())
+			Dim selectedRows As IList(Of DashboardFlatDataSourceRow) = selection.GetDashboardFlatDataSourceRows(flatData)
+			Dim selectedLines = mapItemStorage.Items.Where(Function(item) selectedRows.Contains(CType(item.Tag, DashboardFlatDataSourceRow)))
+			vectorLayer.SelectedItems.AddRange(selectedLines.ToList())
 			skipSelectionEvent = False
 		End Sub
-		Public Overrides Function GetPrintableControl(ByVal customItemData As CustomItemData, ByVal exportInfo As CustomItemExportInfo) As XRControl
+		Protected Overrides Function GetPrintableControl(ByVal customItemData As CustomItemData, ByVal exportInfo As CustomItemExportInfo) As XRControl
 			Dim container As New PrintableComponentContainer()
 			container.PrintableComponent = map
 			Return container

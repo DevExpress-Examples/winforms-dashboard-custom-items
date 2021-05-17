@@ -15,7 +15,7 @@ Namespace CustomItemsSample
 		End Sub
 		Public Sub AttachDesigner(ByVal designer As DashboardDesigner) Implements IExtensionModule.AttachDesigner
 			AttachDashboardControl(designer)
-			designer.CreateCustomItemsBars(GetType(SankeyItemMetadata))
+			designer.CreateCustomItemBars(GetType(SankeyItemMetadata))
 		End Sub
 		Public Sub DetachDesigner() Implements IExtensionModule.DetachDesigner
 			Detach()

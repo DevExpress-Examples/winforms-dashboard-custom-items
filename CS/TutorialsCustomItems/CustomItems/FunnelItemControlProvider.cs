@@ -11,7 +11,7 @@ namespace TutorialsCustomItems{
         CustomDashboardItem<FunnelItemMetadata> dashboardItem;
         ChartControl chart;
         DashboardFlatDataSource flatData;
-        public override Control Control { get { return chart; } }
+        protected override Control Control { get { return chart; } }
 
         public FunnelItemControlProvider(CustomDashboardItem<FunnelItemMetadata> dashboardItem) {
             this.dashboardItem = dashboardItem;
@@ -25,7 +25,7 @@ namespace TutorialsCustomItems{
             chart.CustomDrawSeriesPoint += CustomDrawSeriesPoint;
         }
 
-        public override void UpdateControl(CustomItemData customItemData)
+        protected override void UpdateControl(CustomItemData customItemData)
         {
             UpdateSelectionMode();
             flatData = customItemData.GetFlatData(new DashboardFlatDataSourceOptions() { AddColoringColumns = true });
@@ -34,7 +34,7 @@ namespace TutorialsCustomItems{
             Series series = ConfigureSeries(flatData);
             chart.Series.Add(series);
         }
-        public override XRControl GetPrintableControl(CustomItemData customItemData, CustomItemExportInfo info)
+        protected override XRControl GetPrintableControl(CustomItemData customItemData, CustomItemExportInfo info)
         {
             PrintableComponentContainer container = new PrintableComponentContainer();
             container.PrintableComponent = chart;
@@ -67,10 +67,10 @@ namespace TutorialsCustomItems{
             e.LegendText = e.SeriesPoint.Argument;
         }
         # region MasterFiltering
-        public override void SetSelection(CustomItemSelection selection)
+        protected override void SetSelection(CustomItemSelection selection)
         {
             chart.ClearSelection();
-            foreach (DashboardFlatDataSourceRow item in selection.AsDashboardFlatDataSourceRows(flatData))
+            foreach (DashboardFlatDataSourceRow item in selection.GetDashboardFlatDataSourceRows(flatData))
                 chart.SelectedItems.Add(item);
         }
         void ChartSelectedItemsChanging(object sender, SelectedItemsChangingEventArgs e)

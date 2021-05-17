@@ -12,7 +12,7 @@ namespace CustomItemsSample {
         }
         public void AttachDesigner(DashboardDesigner designer) {
             AttachDashboardControl(designer);
-            designer.CreateCustomItemsBars(typeof(WaypointMapItemMetadata));
+            designer.CreateCustomItemBars(typeof(WaypointMapItemMetadata));
         }
         public void DetachDesigner() {
             Detach();

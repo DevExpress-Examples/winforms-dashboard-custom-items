@@ -19,7 +19,7 @@ Namespace TutorialsCustomItems
 			InitializeComponent()
 			dashboardDesigner1.CreateRibbon()
 			dashboardDesigner1.LoadDashboard("..\..\Data\TutorialCustomItems.xml")
-			dashboardDesigner1.CreateCustomItemsBars()
+			dashboardDesigner1.CreateCustomItemBars()
 		End Sub
 
 		Private Sub DashboardDesigner1_DataLoading(ByVal sender As Object, ByVal e As DevExpress.DashboardCommon.DataLoadingEventArgs) Handles dashboardDesigner1.DataLoading

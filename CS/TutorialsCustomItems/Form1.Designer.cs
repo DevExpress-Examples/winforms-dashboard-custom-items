@@ -42,7 +42,6 @@
             this.dashboardDesigner1.TabIndex = 0;
             this.dashboardDesigner1.DataLoading += new DevExpress.DashboardCommon.DataLoadingEventHandler(this.DashboardDesigner1_DataLoading);
             this.dashboardDesigner1.CustomDashboardItemControlCreating += new DevExpress.DashboardWin.CustomDashboardItemControlCreatingEventHandler(this.DashboardDesigner1_CustomDashboardItemControlCreating);
-            this.dashboardDesigner1.Load += new System.EventHandler(this.DashboardDesigner1_Load);
             // 
             // Form1
             // 

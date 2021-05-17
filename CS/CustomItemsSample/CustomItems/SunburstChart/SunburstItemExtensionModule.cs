@@ -12,7 +12,7 @@ namespace CustomItemsSample {
         }
         public void AttachDesigner(DashboardDesigner designer) {
             AttachDashboardControl(designer);
-            designer.CreateCustomItemsBars(typeof(SunburstItemMetadata));
+            designer.CreateCustomItemBars(typeof(SunburstItemMetadata));
         }
         public void DetachDesigner() {
             Detach();

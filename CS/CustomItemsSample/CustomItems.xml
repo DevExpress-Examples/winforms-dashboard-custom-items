@@ -40,7 +40,7 @@
     </FederationDataSource>
   </DataSources>
   <Items>
-    <CustomItem ComponentName="sankeyItemDashboardItem1" Name="Trade Flow Wolrdwide" DataSource="dashboardFederationDataSource1" DataMember="Export Data Source" CustomItemType="SankeyItemMetadata">
+    <CustomItem ComponentName="sankeyItemDashboardItem1" Name="Trade Flow Worldwide" DataSource="dashboardFederationDataSource1" DataMember="Export Data Source" CustomItemType="SankeyItemMetadata">
       <InteractivityOptions MasterFilterMode="Multiple" />
       <DataItems>
         <Dimension DataMember="Exporter" ColoringMode="Hue" DefaultId="DataItem0" />

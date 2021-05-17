@@ -20,7 +20,7 @@ Namespace CustomItemsSample
 		Private dashboardItem As CustomDashboardItem(Of SankeyItemMetadata)
 		Private toolTipController As ToolTipController
 
-		Public Overrides ReadOnly Property Control() As Control
+		Protected Overrides ReadOnly Property Control() As Control
 			Get
 				Return sankey
 			End Get
@@ -37,7 +37,7 @@ Namespace CustomItemsSample
 			AddHandler sankey.SelectedItemsChanging, AddressOf Sankey_SelectedItemsChanging
 			AddHandler sankey.HighlightedItemsChanged, AddressOf Sankey_HighlightedItemsChanged
 		End Sub
-		Public Overrides Sub UpdateControl(ByVal customItemData As CustomItemData)
+		Protected Overrides Sub UpdateControl(ByVal customItemData As CustomItemData)
 			multiDimensionalData = customItemData.GetMultiDimensionalData()
 			sankey.DataSource = Nothing
 			flatData = customItemData.GetFlatData(New DashboardFlatDataSourceOptions() With {.AddColoringColumns = True})
@@ -46,12 +46,12 @@ Namespace CustomItemsSample
 				SetSelectionMode()
 			End If
 		End Sub
-		Public Overrides Sub SetSelection(ByVal selection As CustomItemSelection)
-            Dim selectedRows As IList(Of DashboardFlatDataSourceRow) = selection.AsDashboardFlatDataSourceRows(flatData)
-            sankey.SelectedItems.Clear()
+		Protected Overrides Sub SetSelection(ByVal selection As CustomItemSelection)
+			Dim selectedRows As IList(Of DashboardFlatDataSourceRow) = selection.GetDashboardFlatDataSourceRows(flatData)
+			sankey.SelectedItems.Clear()
 			selectedRows.ForEach(Function(r) sankey.SelectedItems.Add(r))
 		End Sub
-		Public Overrides Function GetPrintableControl(ByVal customItemData As CustomItemData, ByVal exportInfo As CustomItemExportInfo) As XRControl
+		Protected Overrides Function GetPrintableControl(ByVal customItemData As CustomItemData, ByVal exportInfo As CustomItemExportInfo) As XRControl
 			Dim container As New PrintableComponentContainer()
 			container.PrintableComponent = sankey
 			Return container

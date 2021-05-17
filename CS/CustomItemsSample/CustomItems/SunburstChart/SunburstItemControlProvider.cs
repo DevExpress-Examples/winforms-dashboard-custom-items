@@ -23,7 +23,7 @@ namespace CustomItemsSample {
         DashboardFlatDataSource flatData;
         Title emptyTitle;
 
-        public override Control Control { get { return sunburst; } }
+        protected override Control Control { get { return sunburst; } }
         public SunburstItemControlProvider(CustomDashboardItem<SunburstItemMetadata> dashboardItem) {
             this.dashboardItem = dashboardItem;
             sunburst = new SunburstControl();
@@ -37,7 +37,7 @@ namespace CustomItemsSample {
             sunburst.Titles.Add(emptyTitle);
             sunburst.MouseClick += Sunburst_MouseClick;
         }
-        public override void UpdateControl(CustomItemData customItemData) {
+        protected override void UpdateControl(CustomItemData customItemData) {
             ClearDataBindings();
             if(ValidateBindings()) {
                 flatData = customItemData.GetFlatData(new DashboardFlatDataSourceOptions() { AddColoringColumns = true });
@@ -47,14 +47,14 @@ namespace CustomItemsSample {
                 SetSelectionMode();
             }
         }
-        public override void SetSelection(CustomItemSelection selection) {
+        protected override void SetSelection(CustomItemSelection selection) {
             skipSelectionEvent = true;
-            IList<DashboardFlatDataSourceRow> selectedRows = selection.AsDashboardFlatDataSourceRows(flatData);
+            IList<DashboardFlatDataSourceRow> selectedRows = selection.GetDashboardFlatDataSourceRows(flatData);
             sunburst.SelectedItems.Clear();
             selectedRows.ForEach(r => sunburst.SelectedItems.Add(r));
             skipSelectionEvent = false;
         }
-        public override XRControl GetPrintableControl(CustomItemData customItemData, CustomItemExportInfo exportInfo) {
+        protected override XRControl GetPrintableControl(CustomItemData customItemData, CustomItemExportInfo exportInfo) {
             PrintableComponentContainer container = new PrintableComponentContainer();
             container.PrintableComponent = sunburst;
             return container;
