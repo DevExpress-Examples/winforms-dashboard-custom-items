@@ -3,8 +3,8 @@
 
 The following example shows how to implement a custom dashboard item in a WinForms application. Custom items allow you to embed any WinForms UI control in a dashboard. You can interact with custom items in the Dashboard Designer just like with any built-in item.
 
+The example's solution contains two projects - **CustomItemsSample** and **TutorialsCustomItems**. 
 
-The example's solution contains two projects. 
 ## CustomItemsSample
 
 *Files to look at*:
@@ -34,15 +34,15 @@ This project contains the following custom dashboard items that allow you to add
 
 This project contains the following custom dashboard items that allow you to add additional functionality to the WinForms Dashboard:
 
-* Hello World ([С#](./CS/TutorialsCustomItems/CustomItems/)/ [VB](./VB/TutorialsCustomItems/CustomItems/))
+* **Hello World** ([С#](./CS/TutorialsCustomItems/CustomItems/)/ [VB](./VB/TutorialsCustomItems/CustomItems/))
 
     A custom item that displays the 'Hello World!' text. 
 
-* Simple Table ([С#](./CS/TutorialsCustomItems/CustomItems/)/ [VB](./VB/TutorialsCustomItems/CustomItems/))
+* **Simple Table** ([С#](./CS/TutorialsCustomItems/CustomItems/)/ [VB](./VB/TutorialsCustomItems/CustomItems/))
 
     A custom item based on the [Grid](http://docs.devexpress.devx/WindowsForms/DevExpress.XtraGrid.GridControl?v=21.1) control.
 
-* Funnel Chart ([С#](./CS/TutorialsCustomItems/CustomItems/)/ [VB](./VB/TutorialsCustomItems/CustomItems/))
+* **Funnel Chart** ([С#](./CS/TutorialsCustomItems/CustomItems/)/ [VB](./VB/TutorialsCustomItems/CustomItems/))
 
     A Funnel chart displays a wide area at the top, indicating the total points' value, while other areas are proportionally smaller.
 
