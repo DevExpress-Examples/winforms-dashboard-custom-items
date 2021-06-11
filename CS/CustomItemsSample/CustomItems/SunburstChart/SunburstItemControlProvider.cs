@@ -26,7 +26,8 @@ namespace CustomItemsSample {
         protected override Control Control { get { return sunburst; } }
         public SunburstItemControlProvider(CustomDashboardItem<SunburstItemMetadata> dashboardItem) {
             this.dashboardItem = dashboardItem;
-            sunburst = new SunburstControl();
+            sunburst = new DashboardSunburstControl();
+            sunburst.BorderOptions.Visible = false;
             this.dataAdapter = new SunburstFlatDataAdapter();
             sunburst.DataAdapter = dataAdapter;
             toolTipController = new ToolTipController();
@@ -40,7 +41,7 @@ namespace CustomItemsSample {
         protected override void UpdateControl(CustomItemData customItemData) {
             ClearDataBindings();
             if(ValidateBindings()) {
-                flatData = customItemData.GetFlatData(new DashboardFlatDataSourceOptions() { AddColoringColumns = true });
+                flatData = customItemData.GetFlatData(new DashboardFlatDataSourceOptions() { AddColoringColumns = true, AddDisplayTextColumns = true });
                 multiDimensionalData = customItemData.GetMultiDimensionalData();
                 SetDataBindings(flatData);
                 SetColorizer(flatData);
@@ -60,6 +61,7 @@ namespace CustomItemsSample {
             return container;
         }
         void ClearDataBindings() {
+            sunburst.Colorizer = null;
             dataAdapter.DataSource = dataAdapter.ValueDataMember = dataAdapter.LabelDataMember = null;
             dataAdapter.GroupDataMembers.Clear();
         }
@@ -68,21 +70,19 @@ namespace CustomItemsSample {
                 emptyTitle.Text = "Sunburst Item does not support Drill-Down";
                 emptyTitle.Visible = true;
                 return false;
-            }
-            else
+            } else
                 emptyTitle.Visible = false;
             return dashboardItem.Metadata.Value != null && dashboardItem.Metadata.Arguments.Count() > 0;
         }
         void SetDataBindings(DashboardFlatDataSource flatDataSource) {
             dataAdapter.ValueDataMember = dashboardItem.Metadata.Value.UniqueId;
-            dataAdapter.LabelDataMember = dashboardItem.Metadata.Arguments.Last().UniqueId;
+            dataAdapter.LabelDataMember = flatDataSource.GetDisplayTextColumn(dashboardItem.Metadata.Arguments.Last().UniqueId).Name;
             dataAdapter.GroupDataMembers.AddRange(
                 dashboardItem.Metadata.Arguments.Where(d => d != dashboardItem.Metadata.Arguments.Last())
-                .Select(d => d.UniqueId).ToList());
+                .Select(d => flatDataSource.GetDisplayTextColumn(d.UniqueId).Name).ToList());
             try {
                 dataAdapter.DataSource = flatDataSource;
-            }
-            catch {
+            } catch {
                 dataAdapter.DataSource = null;
             }
         }
@@ -156,6 +156,12 @@ namespace CustomItemsSample {
                     return Color.FromArgb(colors.First());
             }
             return defaultColor;
+        }
+    }
+    public class DashboardSunburstControl : SunburstControl {
+        protected override void OnMouseClick(MouseEventArgs e) {
+            if(e.Button != MouseButtons.Right)
+                base.OnMouseClick(e);
         }
     }
 }
