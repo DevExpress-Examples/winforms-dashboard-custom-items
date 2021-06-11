@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using DevExpress.DashboardCommon;
 using DevExpress.DashboardCommon.ViewerData;
 using DevExpress.DashboardWin;
-using DevExpress.DataProcessing;
 using DevExpress.Utils;
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraCharts.Sankey;
@@ -23,8 +22,7 @@ namespace CustomItemsSample {
 
         public SankeyItemControlProvider(CustomDashboardItem<SankeyItemMetadata> dashboardItem) {
             this.dashboardItem = dashboardItem;
-            sankey = new DashboardSankeyDiagramControl();
-            sankey.BorderOptions.Thickness = 0;
+            sankey = new SankeyDiagramControl();
             sankey.EmptySankeyText.Text = string.Empty;
             sankey.SelectedItemsChanged += Sankey_SelectedItemsChanged;
             toolTipController = new ToolTipController();
@@ -35,8 +33,8 @@ namespace CustomItemsSample {
         }
         protected override void UpdateControl(CustomItemData customItemData) {
             multiDimensionalData = customItemData.GetMultiDimensionalData();
-            flatData = customItemData.GetFlatData(new DashboardFlatDataSourceOptions() { AddColoringColumns = true, AddDisplayTextColumns = true });
-            ClearBindings();
+            sankey.DataSource = null;
+            flatData = customItemData.GetFlatData(new DashboardFlatDataSourceOptions() { AddColoringColumns = true });
             if(ValidateBindings()) {
                 SetDataBindings(flatData);
                 SetSelectionMode();
@@ -53,11 +51,11 @@ namespace CustomItemsSample {
             return container;
         }
         void Sankey_HighlightedItemsChanged(object sender, SankeyHighlightedItemsChangedEventArgs e) {
-            if((sankey.SelectionMode == SankeySelectionMode.Single && e.HighlightedNodes.Count > 0) || e.HighlightedLinks.Any(x => HasSpecialValues(x)))
+            if(sankey.SelectionMode == SankeySelectionMode.Single && e.HighlightedNodes.Count > 0)
                 sankey.HighlightedItems.Clear();
         }
         void Sankey_SelectedItemsChanging(object sender, SankeySelectedItemsChangingEventArgs e) {
-            if((sankey.SelectionMode == SankeySelectionMode.Single && e.NewNodes.Count > 0) || e.NewLinks.Any(x => HasSpecialValues(x)))
+            if(sankey.SelectionMode == SankeySelectionMode.Single && e.NewNodes.Count > 0)
                 e.Cancel = true;
         }
         void ToolTipController_BeforeShow(object sender, DevExpress.Utils.ToolTipControllerShowEventArgs e) {
@@ -66,7 +64,8 @@ namespace CustomItemsSample {
             else if(e.SelectedObject is SankeyLink) {
                 SankeyLink link = e.SelectedObject as SankeyLink;
                 e.ToolTip = multiDimensionalData.GetMeasures()[0].Format(link.TotalWeight);
-            } else if(e.SelectedObject is SankeyNode) {
+            }
+            else if(e.SelectedObject is SankeyNode) {
                 SankeyNode node = e.SelectedObject as SankeyNode;
                 e.ToolTip = multiDimensionalData.GetMeasures()[0].Format(node.TotalWeight);
             }
@@ -74,7 +73,7 @@ namespace CustomItemsSample {
         void Sankey_SelectedItemsChanged(object sender, SankeySelectedItemsChangedEventArgs e) {
             if(sankey.SelectedItems.Count == 0 && Interactivity.CanClearMasterFilter)
                 Interactivity.ClearMasterFilter();
-            else if(sankey.SelectedItems.Count > 0 && Interactivity.CanSetMasterFilter)
+            else if (Interactivity.CanSetMasterFilter)
                 Interactivity.SetMasterFilter(sankey.SelectedItems.OfType<DashboardFlatDataSourceRow>());
         }
         bool ValidateBindings() {
@@ -86,7 +85,7 @@ namespace CustomItemsSample {
                 sankey.EmptySankeyText.Text = "Add the Source and Target dimensions";
                 return false;
             }
-            if(dashboardItem.Metadata.Source.GetDefinition().Equals(dashboardItem.Metadata.Target.GetDefinition())) {
+            if(dashboardItem.Metadata.Source.DataMember == dashboardItem.Metadata.Target.DataMember) {
                 sankey.EmptySankeyText.Text = "Add different fields to the Source and Target dimensions";
                 return false;
             }
@@ -94,22 +93,16 @@ namespace CustomItemsSample {
         }
         void SetDataBindings(DashboardFlatDataSource flatData) {
             sankey.Colorizer = new SankeyItemColorizer(flatData);
-            sankey.SourceDataMember = flatData.GetDisplayTextColumn(dashboardItem.Metadata.Source.UniqueId).Name;
-            sankey.TargetDataMember = flatData.GetDisplayTextColumn(dashboardItem.Metadata.Target.UniqueId).Name;
+            sankey.SourceDataMember = dashboardItem.Metadata.Source.UniqueId;
+            sankey.TargetDataMember = dashboardItem.Metadata.Target.UniqueId;
             if(dashboardItem.Metadata.Weight != null)
                 sankey.WeightDataMember = dashboardItem.Metadata.Weight.UniqueId;
             try {
                 sankey.DataSource = flatData;
-            } catch {
+            }
+            catch {
                 sankey.DataSource = null;
             }
-        }
-        void ClearBindings() {
-            sankey.DataSource = null;
-            sankey.Colorizer = null;
-            sankey.SourceDataMember = null;
-            sankey.TargetDataMember = null;
-            sankey.WeightDataMember = null;
         }
         void SetSelectionMode() {
             switch(Interactivity.MasterFilterMode) {
@@ -123,11 +116,6 @@ namespace CustomItemsSample {
                     sankey.SelectionMode = SankeySelectionMode.Single;
                     break;
             }
-        }
-        bool HasSpecialValues(SankeyLink link) {
-            DashboardFlatDataSourceRow row = (DashboardFlatDataSourceRow)link.Tags[0];
-            return SpecialValues.IsOthersValue(flatData.GetValue(dashboardItem.Metadata.Source.UniqueId, row))
-                || SpecialValues.IsOthersValue(flatData.GetValue(dashboardItem.Metadata.Target.UniqueId, row));
         }
     }
     class SankeyItemColorizer : ISankeyColorizer {
@@ -150,12 +138,6 @@ namespace CustomItemsSample {
         }
         public Color GetNodeColor(SankeyNode info) {
             return nodeDefaultColor;
-        }
-    }
-    public class DashboardSankeyDiagramControl : SankeyDiagramControl {
-        protected override void OnMouseUp(MouseEventArgs e) {
-            if(e.Button != MouseButtons.Right)
-                base.OnMouseUp(e);
         }
     }
 }

@@ -32,8 +32,7 @@ Namespace CustomItemsSample
 		End Property
 		Public Sub New(ByVal dashboardItem As CustomDashboardItem(Of SunburstItemMetadata))
 			Me.dashboardItem = dashboardItem
-			sunburst = New DashboardSunburstControl()
-			sunburst.BorderOptions.Visible = False
+			sunburst = New SunburstControl()
 			Me.dataAdapter = New SunburstFlatDataAdapter()
 			sunburst.DataAdapter = dataAdapter
 			toolTipController = New ToolTipController()
@@ -47,10 +46,7 @@ Namespace CustomItemsSample
 		Protected Overrides Sub UpdateControl(ByVal customItemData As CustomItemData)
 			ClearDataBindings()
 			If ValidateBindings() Then
-				flatData = customItemData.GetFlatData(New DashboardFlatDataSourceOptions() With {
-					.AddColoringColumns = True,
-					.AddDisplayTextColumns = True
-				})
+				flatData = customItemData.GetFlatData(New DashboardFlatDataSourceOptions() With {.AddColoringColumns = True})
 				multiDimensionalData = customItemData.GetMultiDimensionalData()
 				SetDataBindings(flatData)
 				SetColorizer(flatData)
@@ -70,7 +66,6 @@ Namespace CustomItemsSample
 			Return container
 		End Function
 		Private Sub ClearDataBindings()
-			sunburst.Colorizer = Nothing
 			dataAdapter.LabelDataMember = Nothing
 			dataAdapter.ValueDataMember = dataAdapter.LabelDataMember
 			dataAdapter.DataSource = dataAdapter.ValueDataMember
@@ -88,9 +83,9 @@ Namespace CustomItemsSample
 		End Function
 		Private Sub SetDataBindings(ByVal flatDataSource As DashboardFlatDataSource)
 			dataAdapter.ValueDataMember = dashboardItem.Metadata.Value.UniqueId
-			dataAdapter.LabelDataMember = flatDataSource.GetDisplayTextColumn(dashboardItem.Metadata.Arguments.Last().UniqueId).Name
-			dataAdapter.GroupDataMembers.AddRange(dashboardItem.Metadata.Arguments.Where(Function(d) Not d.Equals(dashboardItem.Metadata.Arguments.Last())).Select(Function(d) flatDataSource.GetDisplayTextColumn(d.UniqueId).Name).ToList())
-			Try
+			dataAdapter.LabelDataMember = dashboardItem.Metadata.Arguments.Last().UniqueId
+            dataAdapter.GroupDataMembers.AddRange(dashboardItem.Metadata.Arguments.Where(Function(d) Not d.Equals(dashboardItem.Metadata.Arguments.Last())).Select(Function(d) d.UniqueId).ToList())
+            Try
 				dataAdapter.DataSource = flatDataSource
 			Catch
 				dataAdapter.DataSource = Nothing
@@ -175,12 +170,4 @@ Namespace CustomItemsSample
             Return defaultColor
         End Function
     End Class
-	Public Class DashboardSunburstControl
-		Inherits SunburstControl
-		Protected Overrides Sub OnMouseClick(ByVal e As MouseEventArgs)
-			If e.Button <> MouseButtons.Right Then
-				MyBase.OnMouseClick(e)
-			End If
-		End Sub
-	End Class
 End Namespace

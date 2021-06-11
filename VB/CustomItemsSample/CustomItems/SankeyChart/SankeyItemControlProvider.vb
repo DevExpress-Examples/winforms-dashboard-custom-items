@@ -6,7 +6,6 @@ Imports System.Windows.Forms
 Imports DevExpress.DashboardCommon
 Imports DevExpress.DashboardCommon.ViewerData
 Imports DevExpress.DashboardWin
-Imports DevExpress.DataProcessing
 Imports DevExpress.Utils
 Imports DevExpress.Utils.Extensions
 Imports DevExpress.XtraCharts.Sankey
@@ -29,8 +28,7 @@ Namespace CustomItemsSample
 
 		Public Sub New(ByVal dashboardItem As CustomDashboardItem(Of SankeyItemMetadata))
 			Me.dashboardItem = dashboardItem
-			sankey = New DashboardSankeyDiagramControl()
-			sankey.BorderOptions.Thickness = 0
+			sankey = New SankeyDiagramControl()
 			sankey.EmptySankeyText.Text = String.Empty
 			AddHandler sankey.SelectedItemsChanged, AddressOf Sankey_SelectedItemsChanged
 			toolTipController = New ToolTipController()
@@ -41,11 +39,8 @@ Namespace CustomItemsSample
 		End Sub
 		Protected Overrides Sub UpdateControl(ByVal customItemData As CustomItemData)
 			multiDimensionalData = customItemData.GetMultiDimensionalData()
-			flatData = customItemData.GetFlatData(New DashboardFlatDataSourceOptions() With {
-				.AddColoringColumns = True,
-				.AddDisplayTextColumns = True
-			})
-			ClearBindings()
+			sankey.DataSource = Nothing
+			flatData = customItemData.GetFlatData(New DashboardFlatDataSourceOptions() With {.AddColoringColumns = True})
 			If ValidateBindings() Then
 				SetDataBindings(flatData)
 				SetSelectionMode()
@@ -62,12 +57,12 @@ Namespace CustomItemsSample
 			Return container
 		End Function
 		Private Sub Sankey_HighlightedItemsChanged(ByVal sender As Object, ByVal e As SankeyHighlightedItemsChangedEventArgs)
-			If (sankey.SelectionMode = SankeySelectionMode.Single AndAlso e.HighlightedNodes.Count > 0) OrElse e.HighlightedLinks.Any(Function(x) HasSpecialValues(x)) Then
+			If sankey.SelectionMode = SankeySelectionMode.Single AndAlso e.HighlightedNodes.Count > 0 Then
 				sankey.HighlightedItems.Clear()
 			End If
 		End Sub
 		Private Sub Sankey_SelectedItemsChanging(ByVal sender As Object, ByVal e As SankeySelectedItemsChangingEventArgs)
-			If (sankey.SelectionMode = SankeySelectionMode.Single AndAlso e.NewNodes.Count > 0) OrElse e.NewLinks.Any(Function(x) HasSpecialValues(x)) Then
+			If sankey.SelectionMode = SankeySelectionMode.Single AndAlso e.NewNodes.Count > 0 Then
 				e.Cancel = True
 			End If
 		End Sub
@@ -85,7 +80,7 @@ Namespace CustomItemsSample
 		Private Sub Sankey_SelectedItemsChanged(ByVal sender As Object, ByVal e As SankeySelectedItemsChangedEventArgs)
 			If sankey.SelectedItems.Count = 0 AndAlso Interactivity.CanClearMasterFilter Then
 				Interactivity.ClearMasterFilter()
-			ElseIf sankey.SelectedItems.Count > 0 AndAlso Interactivity.CanSetMasterFilter Then
+			ElseIf Interactivity.CanSetMasterFilter Then
 				Interactivity.SetMasterFilter(sankey.SelectedItems.OfType(Of DashboardFlatDataSourceRow)())
 			End If
 		End Sub
@@ -98,7 +93,7 @@ Namespace CustomItemsSample
 				sankey.EmptySankeyText.Text = "Add the Source and Target dimensions"
 				Return False
 			End If
-			If dashboardItem.Metadata.Source.GetDefinition().Equals(dashboardItem.Metadata.Target.GetDefinition()) Then
+			If dashboardItem.Metadata.Source.DataMember = dashboardItem.Metadata.Target.DataMember Then
 				sankey.EmptySankeyText.Text = "Add different fields to the Source and Target dimensions"
 				Return False
 			End If
@@ -106,8 +101,8 @@ Namespace CustomItemsSample
 		End Function
 		Private Sub SetDataBindings(ByVal flatData As DashboardFlatDataSource)
 			sankey.Colorizer = New SankeyItemColorizer(flatData)
-			sankey.SourceDataMember = flatData.GetDisplayTextColumn(dashboardItem.Metadata.Source.UniqueId).Name
-			sankey.TargetDataMember = flatData.GetDisplayTextColumn(dashboardItem.Metadata.Target.UniqueId).Name
+			sankey.SourceDataMember = dashboardItem.Metadata.Source.UniqueId
+			sankey.TargetDataMember = dashboardItem.Metadata.Target.UniqueId
 			If dashboardItem.Metadata.Weight IsNot Nothing Then
 				sankey.WeightDataMember = dashboardItem.Metadata.Weight.UniqueId
 			End If
@@ -116,13 +111,6 @@ Namespace CustomItemsSample
 			Catch
 				sankey.DataSource = Nothing
 			End Try
-		End Sub
-		Private Sub ClearBindings()
-			sankey.DataSource = Nothing
-			sankey.Colorizer = Nothing
-			sankey.SourceDataMember = Nothing
-			sankey.TargetDataMember = Nothing
-			sankey.WeightDataMember = Nothing
 		End Sub
 		Private Sub SetSelectionMode()
 			Select Case Interactivity.MasterFilterMode
@@ -135,10 +123,6 @@ Namespace CustomItemsSample
 					sankey.SelectionMode = SankeySelectionMode.Single
 			End Select
 		End Sub
-		Private Function HasSpecialValues(ByVal link As SankeyLink) As Boolean
-			Dim row As DashboardFlatDataSourceRow = CType(link.Tags(0), DashboardFlatDataSourceRow)
-			Return SpecialValues.IsOthersValue(flatData.GetValue(dashboardItem.Metadata.Source.UniqueId, row)) OrElse SpecialValues.IsOthersValue(flatData.GetValue(dashboardItem.Metadata.Target.UniqueId, row))
-		End Function
 	End Class
 	Friend Class SankeyItemColorizer
 		Implements ISankeyColorizer
@@ -164,12 +148,4 @@ Namespace CustomItemsSample
         End Function
 
     End Class
-	Public Class DashboardSankeyDiagramControl
-		Inherits SankeyDiagramControl
-		Protected Overrides Sub OnMouseUp(ByVal e As MouseEventArgs)
-			If e.Button <> MouseButtons.Right Then
-				MyBase.OnMouseUp(e)
-			End If
-		End Sub
-	End Class
 End Namespace
