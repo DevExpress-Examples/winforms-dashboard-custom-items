@@ -1,4 +1,5 @@
 ﻿Imports System
+Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Windows.Forms
 Imports DevExpress.DashboardCommon
@@ -25,6 +26,7 @@ Namespace TutorialsCustomItems
 			chart.RuntimeHitTesting = True
 			chart.BorderOptions.Visibility = DevExpress.Utils.DefaultBoolean.False
 			chart.SeriesSelectionMode = SeriesSelectionMode.Point
+			AddHandler chart.ObjectHotTracked, AddressOf Chart_ObjectHotTracked
 			AddHandler chart.MouseDoubleClick, AddressOf MouseDoubleClick
 			AddHandler chart.SelectedItemsChanged, AddressOf ChartSelectedItemsChanged
 			AddHandler chart.SelectedItemsChanging, AddressOf ChartSelectedItemsChanging
@@ -74,16 +76,24 @@ Namespace TutorialsCustomItems
 			Next item
 		End Sub
 		Private Sub ChartSelectedItemsChanging(ByVal sender As Object, ByVal e As SelectedItemsChangingEventArgs)
-			If Interactivity.MasterFilterMode = DashboardItemMasterFilterMode.Single AndAlso e.NewItems.OfType(Of DashboardFlatDataSourceRow)().Count() = 0 Then
+			Dim selectedSeriesPoint As List(Of DashboardFlatDataSourceRow) = e.NewItems.OfType(Of DashboardFlatDataSourceRow)().ToList()
+			If e.NewItems.Count > 0 AndAlso selectedSeriesPoint.Count = 0 Then
+				e.Cancel = True
+			End If
+			If Interactivity.MasterFilterMode = DashboardItemMasterFilterMode.Single AndAlso selectedSeriesPoint.Count = 0 Then
 				e.Cancel = True
 			End If
 		End Sub
 		Private Sub ChartSelectedItemsChanged(ByVal sender As Object, ByVal e As SelectedItemsChangedEventArgs)
-			If chart.SelectedItems.Count = 0 AndAlso Interactivity.CanClearMasterFilter Then
+			Dim selectedItems As List(Of DashboardFlatDataSourceRow) = chart.SelectedItems.OfType(Of DashboardFlatDataSourceRow)().ToList()
+			If selectedItems.Count = 0 AndAlso Interactivity.CanClearMasterFilter Then
 				Interactivity.ClearMasterFilter()
-			ElseIf Interactivity.CanSetMasterFilter Then
+			ElseIf selectedItems.Count > 0 AndAlso Interactivity.CanSetMasterFilter Then
 				Interactivity.SetMasterFilter(chart.SelectedItems.OfType(Of DashboardFlatDataSourceRow)())
 			End If
+		End Sub
+		Private Sub Chart_ObjectHotTracked(ByVal sender As Object, ByVal e As HotTrackEventArgs)
+			e.Cancel = Not (TypeOf e.Object Is Series)
 		End Sub
 		Private Sub UpdateSelectionMode()
 			Select Case Interactivity.MasterFilterMode

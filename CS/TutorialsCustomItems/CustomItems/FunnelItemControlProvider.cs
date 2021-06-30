@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.DashboardCommon;
@@ -19,6 +20,7 @@ namespace TutorialsCustomItems{
             chart.RuntimeHitTesting = true;
             chart.BorderOptions.Visibility = DevExpress.Utils.DefaultBoolean.False;
             chart.SeriesSelectionMode = SeriesSelectionMode.Point;
+            chart.ObjectHotTracked += Chart_ObjectHotTracked;
             chart.MouseDoubleClick += MouseDoubleClick;
             chart.SelectedItemsChanged += ChartSelectedItemsChanged;
             chart.SelectedItemsChanging += ChartSelectedItemsChanging;
@@ -75,15 +77,22 @@ namespace TutorialsCustomItems{
         }
         void ChartSelectedItemsChanging(object sender, SelectedItemsChangingEventArgs e)
         {
-            if (Interactivity.MasterFilterMode == DashboardItemMasterFilterMode.Single && e.NewItems.OfType<DashboardFlatDataSourceRow>().Count() == 0)
+            List<DashboardFlatDataSourceRow> selectedSeriesPoint = e.NewItems.OfType<DashboardFlatDataSourceRow>().ToList();
+            if(e.NewItems.Count > 0 && selectedSeriesPoint.Count == 0) 
+                e.Cancel = true;
+            if (Interactivity.MasterFilterMode == DashboardItemMasterFilterMode.Single && selectedSeriesPoint.Count == 0)
                 e.Cancel = true;
         }
         void ChartSelectedItemsChanged(object sender, SelectedItemsChangedEventArgs e)
         {
-            if (chart.SelectedItems.Count == 0 && Interactivity.CanClearMasterFilter)
+            List<DashboardFlatDataSourceRow> selectedItems = chart.SelectedItems.OfType<DashboardFlatDataSourceRow>().ToList();
+            if (selectedItems.Count == 0 && Interactivity.CanClearMasterFilter)
                 Interactivity.ClearMasterFilter();
-            else if (Interactivity.CanSetMasterFilter)
+            else if (selectedItems.Count > 0 && Interactivity.CanSetMasterFilter)
                 Interactivity.SetMasterFilter(chart.SelectedItems.OfType<DashboardFlatDataSourceRow>());
+        }
+        void Chart_ObjectHotTracked(object sender, HotTrackEventArgs e) {
+            e.Cancel = !(e.Object is Series);
         }
         void UpdateSelectionMode()
         {
