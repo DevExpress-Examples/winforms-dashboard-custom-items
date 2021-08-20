@@ -26,7 +26,7 @@ This project contains the following custom dashboard items that allow you to add
 
 ## Documentation
 
-* [Custom Item](http://docs.devexpress.devx/Dashboard/403031/winforms-dashboard/winforms-designer/create-dashboards-in-the-winforms-designer/dashboard-item-settings/custom-item?v=21.1)
+[Custom Item](http://docs.devexpress.devx/Dashboard/403031/winforms-dashboard/winforms-designer/create-dashboards-in-the-winforms-designer/dashboard-item-settings/custom-item?v=21.1)
 
 ## More Examples 
 
