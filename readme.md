@@ -4,7 +4,7 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
 
-# WinForms Dashboard - Custom Items
+# Dashboard for WinForms - Custom Items
 
 The following example shows how to implement a custom dashboard item in a WinForms application. Custom items allow you to embed any WinForms UI control in a dashboard. You can interact with custom items in the Dashboard Designer just like with any built-in item.
 ## TutorialsCustomItems
@@ -31,8 +31,8 @@ This project contains the following custom dashboard items that allow you to add
 
 ## Documentation
 
-[Custom Item](http://docs.devexpress.devx/Dashboard/403031/winforms-dashboard/winforms-designer/create-dashboards-in-the-winforms-designer/dashboard-item-settings/custom-item?v=21.1)
+* [Custom Item](http://docs.devexpress.devx/Dashboard/403031/winforms-dashboard/winforms-designer/create-dashboards-in-the-winforms-designer/dashboard-item-settings/custom-item?v=21.1)
 
 ## More Examples 
 
-[Custom Items Extension](https://github.com/DevExpress-Examples/winforms-dashboard-custom-items-extension)
+* [Custom Items Extension](https://github.com/DevExpress-Examples/winforms-dashboard-custom-items-extension)
