@@ -23,7 +23,7 @@ This project contains the following custom dashboard items that allow you to add
 
 * **Simple Table** ([С#](./CS/TutorialsCustomItems/CustomItems/)/ [VB](./VB/TutorialsCustomItems/CustomItems/))
 
-    A custom item based on the [Grid](http://docs.devexpress.devx/WindowsForms/DevExpress.XtraGrid.GridControl?v=21.1) control.
+    A custom item based on the [Grid](https://docs.devexpress.com/WindowsForms/DevExpress.XtraGrid.GridControl) control.
 
 * **Funnel Chart** ([С#](./CS/TutorialsCustomItems/CustomItems/)/ [VB](./VB/TutorialsCustomItems/CustomItems/))
 
@@ -31,7 +31,7 @@ This project contains the following custom dashboard items that allow you to add
 
 ## Documentation
 
-* [Custom Item](http://docs.devexpress.devx/Dashboard/403031/winforms-dashboard/winforms-designer/create-dashboards-in-the-winforms-designer/dashboard-item-settings/custom-item?v=21.1)
+* [Custom Item Overview](https://docs.devexpress.com/Dashboard/403031/winforms-dashboard/winforms-designer/ui-elements-and-customization/create-a-custom-item)
 
 ## More Examples 
 
