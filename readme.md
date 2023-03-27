@@ -1,38 +1,54 @@
 <!-- default badges list -->
-![](https://img.shields.io/endpoint?url=https://codecentral.devexpress.com/api/v1/VersionRange/358224064/21.1.4%2B)
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T990577)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
 
-# Dashboard for WinForms - Custom Items
+# Dashboard for WinForms - Custom Item Tutorials
 
-The following example shows how to implement a custom dashboard item in a WinForms application. Custom items allow you to embed any WinForms UI control in a dashboard. You can interact with custom items in the Dashboard Designer just like with any built-in item.
-## TutorialsCustomItems
+**Custom items** allow you to embed any WinForms UI control in a dashboard. You can interact with custom items in the Dashboard Designer just like with any built-in item.
 
-*Files to look at*:
+This project contains the custom dashboard items that you get after you complete the [Custom Item](https://docs.devexpress.com/Dashboard/403031/winforms-dashboard/winforms-designer/ui-elements-and-customization/create-a-custom-item) tutorials.
+
+## Static Custom Item
+
+**View Tutorial**: [Create a Static Custom Item](https://docs.devexpress.com/Dashboard/403087/winforms-dashboard/winforms-designer/ui-elements-and-customization/create-a-custom-item/create-a-static-item)
+
+**View File**: [С#](./CS/TutorialsCustomItems/CustomItems/)/ [VB](./VB/TutorialsCustomItems/CustomItems/)
+
+The file contains contains a code for a **HelloWorld** custom item that displays the 'Hello World!' text. 
+
+![](images/win-dashboard-static-custom-item.png)
+
+## Data-Aware Custom Item
+
+**View Tutorial**: [Create a Data-Aware Item](https://docs.devexpress.com/Dashboard/403088/winforms-dashboard/winforms-designer/ui-elements-and-customization/create-a-custom-item/create-a-data-aware-item)
+
+**View File**: [С#](./CS/TutorialsCustomItems/CustomItems/)/ [VB](./VB/TutorialsCustomItems/CustomItems/)
+
+The file contains a code for a custom item based on the [Grid](https://docs.devexpress.com/WindowsForms/DevExpress.XtraGrid.GridControl) control.
+
+![](images/win-dashboard-data-aware-custom-item-with-binding-panel.png)
+
+## Data-Aware Item based on External Visualization Widget
+
+**View Tutorial**: [Create an Interactive Data-Aware Item](https://docs.devexpress.com/Dashboard/403032/winforms-dashboard/winforms-designer/ui-elements-and-customization/create-a-custom-item/create-an-interactive-data-aware-item)
+
+**View File**: [С#](./CS/TutorialsCustomItems/CustomItems/)/ [VB](./VB/TutorialsCustomItems/CustomItems/)
+
+The file contains a code for a more "real-world" custom item that uses an external visualization control. A Funnel chart displays a wide area at the top that indicates the total points' value, while other areas are proportionally smaller.
+
+![](images/win-dashboard-interactive-data-aware-item-with-binding-panel.png)
+
+## Files to Review
 
 * [Form1.cs](./CS/TutorialsCustomItems/Form1.cs) (VB: [Form1.vb](./VB/TutorialsCustomItems/Form1.vb))
 * [Modules](./CS/TutorialsCustomItems/CustomItems/) (VB: [Modules](./VB/TutorialsCustomItems/CustomItems/))
 
-
-This project contains the following custom dashboard items that allow you to add additional functionality to the WinForms Dashboard:
-
-* **Hello World** ([С#](./CS/TutorialsCustomItems/CustomItems/)/ [VB](./VB/TutorialsCustomItems/CustomItems/))
-
-    A custom item that displays the 'Hello World!' text. 
-
-* **Simple Table** ([С#](./CS/TutorialsCustomItems/CustomItems/)/ [VB](./VB/TutorialsCustomItems/CustomItems/))
-
-    A custom item based on the [Grid](https://docs.devexpress.com/WindowsForms/DevExpress.XtraGrid.GridControl) control.
-
-* **Funnel Chart** ([С#](./CS/TutorialsCustomItems/CustomItems/)/ [VB](./VB/TutorialsCustomItems/CustomItems/))
-
-    A Funnel chart displays a wide area at the top, indicating the total points' value, while other areas are proportionally smaller.
-
 ## Documentation
 
-* [Custom Item Overview](https://docs.devexpress.com/Dashboard/403031/winforms-dashboard/winforms-designer/ui-elements-and-customization/create-a-custom-item)
+* [Create a Custom Item](https://docs.devexpress.com/Dashboard/403031/winforms-dashboard/winforms-designer/ui-elements-and-customization/create-a-custom-item)
+* [Custom Item Troubleshooting](https://docs.devexpress.com/Dashboard/403250/winforms-dashboard/winforms-designer/ui-elements-and-customization/create-a-custom-item/custom-item-troubleshooting)
 
 ## More Examples 
 
-* [Custom Items Extension](https://github.com/DevExpress-Examples/winforms-dashboard-custom-items-extension)
+* [Dashboard for WinForms - Custom Items Extension](https://github.com/DevExpress-Examples/winforms-dashboard-custom-items-extension)
