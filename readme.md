@@ -35,7 +35,7 @@ The file contains a code for a custom item based on the [Grid](https://docs.deve
 
 **View File**: [С#](./CS/TutorialsCustomItems/CustomItems/)/ [VB](./VB/TutorialsCustomItems/CustomItems/)
 
-The file contains a code for a more "real-world" custom item that uses an external visualization control. A Funnel chart displays a wide area at the top, indicating the total points' value, while other areas are proportionally smaller.
+The file contains a code for a more "real-world" custom item that uses an external visualization control. A Funnel chart displays a wide area at the top that indicates the total points' value, while other areas are proportionally smaller.
 
 ![](images/win-dashboard-interactive-data-aware-item-with-binding-panel.png)
 
