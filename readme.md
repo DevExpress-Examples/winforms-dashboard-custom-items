@@ -7,7 +7,7 @@
 
 **Custom items** allow you to embed any WinForms UI control in a dashboard. You can interact with custom items in the Dashboard Designer just like with any built-in item.
 
-This project contains the custom dashboard items that you will get after you complete the [Custom Item](https://docs.devexpress.com/Dashboard/403031/winforms-dashboard/winforms-designer/ui-elements-and-customization/create-a-custom-item) tutorials.
+This project contains the custom dashboard items that you get after you complete the [Custom Item](https://docs.devexpress.com/Dashboard/403031/winforms-dashboard/winforms-designer/ui-elements-and-customization/create-a-custom-item) tutorials.
 
 ## Static Custom Item
 
