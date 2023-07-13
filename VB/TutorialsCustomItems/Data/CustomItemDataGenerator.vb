@@ -1,4 +1,4 @@
-﻿Imports System
+Imports System
 Imports System.Collections.Generic
 Public Class CustomItemDataGenerator
 	Private Const trillionMultiplier As Long = 1000000000000

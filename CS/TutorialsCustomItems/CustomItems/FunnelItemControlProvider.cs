@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -68,7 +68,6 @@ namespace TutorialsCustomItems{
             e.LabelText = e.SeriesPoint.Argument + " - " + formattedValue;
             e.LegendText = e.SeriesPoint.Argument;
         }
-        # region MasterFiltering
         protected override void SetSelection(CustomItemSelection selection)
         {
             chart.ClearSelection();
@@ -112,7 +111,6 @@ namespace TutorialsCustomItems{
                     break;
             }
         }
-            #endregion
             void MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ChartHitInfo hitInfo = chart.CalcHitInfo(e.Location);

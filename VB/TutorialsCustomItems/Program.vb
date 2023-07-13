@@ -1,4 +1,4 @@
-﻿Imports DevExpress.DashboardCommon
+Imports DevExpress.DashboardCommon
 Imports System
 Imports System.Collections.Generic
 Imports System.Linq

@@ -41,6 +41,7 @@
             this.dashboardDesigner1.Size = new System.Drawing.Size(800, 450);
             this.dashboardDesigner1.TabIndex = 0;
             this.dashboardDesigner1.DataLoading += new DevExpress.DashboardCommon.DataLoadingEventHandler(this.DashboardDesigner1_DataLoading);
+            this.dashboardDesigner1.CustomizeExportDocument += new DevExpress.DashboardCommon.CustomizeExportDocumentEventHandler(this.dashboardDesigner1_CustomizeExportDocument);
             this.dashboardDesigner1.CustomDashboardItemControlCreating += new DevExpress.DashboardWin.CustomDashboardItemControlCreatingEventHandler(this.DashboardDesigner1_CustomDashboardItemControlCreating);
             // 
             // Form1
