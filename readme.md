@@ -1,5 +1,5 @@
 <!-- default badges list -->
-![](https://img.shields.io/endpoint?url=https://codecentral.devexpress.com/api/v1/VersionRange/358224064/2023.1)
+![](https://img.shields.io/endpoint?url=https://codecentral.devexpress.com/api/v1/VersionRange/358224064/21.1.4%2B)
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T990577)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
@@ -18,7 +18,7 @@ This project contains the custom dashboard items that you get after you complete
 
 The file contains contains a code for a **HelloWorld** custom item that displays the 'Hello World!' text. 
 
-![](images/win-dashboard-static-custom-item.png)
+![](Images/win-dashboard-static-custom-item.png)
 
 ## Data-Aware Custom Item
 
@@ -28,7 +28,7 @@ The file contains contains a code for a **HelloWorld** custom item that displays
 
 The file contains a code for a custom item based on the [Grid](https://docs.devexpress.com/WindowsForms/DevExpress.XtraGrid.GridControl) control.
 
-![](images/win-dashboard-data-aware-custom-item-with-binding-panel.png)
+![](Images/win-dashboard-data-aware-custom-item-with-binding-panel.png)
 
 ## Data-Aware Item based on External Visualization Widget
 
@@ -38,7 +38,7 @@ The file contains a code for a custom item based on the [Grid](https://docs.deve
 
 The file contains a code for a more "real-world" custom item that uses an external visualization control. A Funnel chart displays a wide area at the top that indicates the total points' value, while other areas are proportionally smaller.
 
-![](images/win-dashboard-interactive-data-aware-item-with-binding-panel.png)
+![](Images/win-dashboard-interactive-data-aware-item-with-binding-panel.png)
 
 ## Files to Review
 
