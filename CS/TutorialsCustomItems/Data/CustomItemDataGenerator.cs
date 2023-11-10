@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 public class CustomItemDataGenerator {
     const long trillionMultiplier = 1000000000000;
