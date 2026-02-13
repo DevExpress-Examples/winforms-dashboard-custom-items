@@ -55,7 +55,7 @@ The file contains a code for a more "real-world" custom item that uses an extern
 
 * [Dashboard for WinForms - Custom Items Extension](https://github.com/DevExpress-Examples/winforms-dashboard-custom-items-extension)
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=winforms-dashboard-custom-items&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=winforms-dashboard-custom-items&~~~was_helpful=no)
 
